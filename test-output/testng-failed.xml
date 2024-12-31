@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="tests" data-provider-thread-count="1" name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="org.eq.listners.Listners"/>
+    <listener class-name="org.eq.listners.MethodInterceptor"/>
+    <listener class-name="org.eq.listners.AnnotationTransformer"/>
+  </listeners>
+  <test thread-count="2" parallel="tests" name="EQ(failed)">
+    <classes>
+      <class name="com.eq.test.OrangeEQTests">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="finish"/>
+          <include name="loginorm" invocation-numbers="1"/>
+          <include name="beforeSuite"/>
+        </methods>
+      </class> <!-- com.eq.test.OrangeEQTests -->
+    </classes>
+  </test> <!-- EQ(failed) -->
+</suite> <!-- Failed suite [All Test Suite] -->

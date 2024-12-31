@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- report theme -->
+        <!-- standard, dark -->
+        <theme>dark</theme>
+
+        <!-- enables timeline -->
+        <!-- defaults to true -->
+        <enableTimeline>true</enableTimeline>
+        <!-- thumbanil Base64 -->
+        <thumbnailForBase64>true</thumbnailForBase64>
+        <!-- document encoding -->
+        <!-- defaults to UTF-8 -->
+        <encoding>UTF-8</encoding>
+
+        <!-- protocol for script and stylesheets -->
+        <!-- defaults to https -->
+        <protocol>https</protocol>
+
+        <!-- title of the document -->
+        <documentTitle>EQ</documentTitle>
+
+        <!-- report name - displayed at top-nav -->
+        <reportName>
+            <![CDATA[
+                <img src='/Users/srinivasangovindaraj/IdeaProjects/FW/EQOneFW/src/main/resources/logo.png' alt='EQ I Love You' />
+            ]]>
+        </reportName>
+        <!-- custom javascript -->
+        <scripts>
+            <![CDATA[
+                $(document).ready(function() {
+
+                });
+            ]]>
+        </scripts>
+        <!-- custom styles -->
+        <styles>
+            <![CDATA[
+            .report-img { border: 1px solid #f6f7fa;   cursor: zoom-in;    width: 75px; }
+        ]]>
+        </styles>
+        <scripts>
+            <![CDATA[
+        $(document).ready(function() {
+        $('.brand-logo.blue.darken-3').css('display','none');
+        });
+        ]]>
+        </scripts>
+
+        <!-- custom styles -->
+<!--        <styles>-->
+<!--            <![CDATA[-->
+
+<!--            ]]>-->
+<!--        </styles>-->
+    </configuration>
+</extentreports>

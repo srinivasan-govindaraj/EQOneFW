@@ -24,7 +24,7 @@
         <!-- report name - displayed at top-nav -->
         <reportName>
             <![CDATA[
-                <img src='/Users/srinivasangovindaraj/IdeaProjects/FW/EQOneFW/src/main/resources/logo.png' alt='EQ I Love You' />
+                <img src='../logo/eq.png' alt='EQ I Love You' />
             ]]>
         </reportName>
         <!-- custom javascript -->

@@ -10,6 +10,7 @@ public final class Constants {
     private static final String CONFIG = System.getProperty("user.dir")+"/src/main/resources/config.properties";
     private static final String JSONCONFIG = System.getProperty("user.dir")+"/src/main/resources/JSONConfig.json";
     private static final String EXTENTREPORT = System.getProperty("user.dir")+"/test-output/Report/";
+    private static final String TestData = System.getProperty("user.dir")+"/TestData/";
     private static int EXPLICITWAIT = 10;
 
     public static int getEXPLICITWAIT() {
@@ -42,4 +43,9 @@ public final class Constants {
     public static String getJsonconfig() {
         return JSONCONFIG;
     }
+    public static String getTestData()
+    {
+        return TestData;
+    }
+
 }

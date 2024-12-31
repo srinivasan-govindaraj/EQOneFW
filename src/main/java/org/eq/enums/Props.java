@@ -6,6 +6,7 @@ public enum Props {
     PASSWORD,
     NEWREPORT,
     PASSONLYSS,
-    FAILEDONLYSS;
+    FAILEDONLYSS,
+    TESTDATA;
 
 }

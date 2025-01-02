@@ -6,7 +6,7 @@
         <listener class-name="org.eq.listners.MethodInterceptor"></listener>
         <listener class-name="org.eq.listners.AnnotationTransformer"></listener>
     </listeners>
-    <test verbose="2" preserve-order="false" name="EQ" >
+    <test verbose="2" preserve-order="false" name="EQ"  >
         <classes>
            <!-- <class name="com.eq.test.LoginPageTests"/>-->
             <class name="com.eq.test.OrangeEQTests"/>

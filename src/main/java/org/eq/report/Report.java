@@ -50,6 +50,7 @@ public final class Report {
         if(Objects.nonNull(extent)) {
             extent.flush();
             //will implement the scenario context future
+            ReportManager.flushTest();
             Desktop.getDesktop().browse(new File(ExtentReortPath).toURI());
         }
 

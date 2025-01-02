@@ -48,7 +48,7 @@ public class Listners implements ISuiteListener, ITestListener {
     public void onTestStart(ITestResult result) {
         //ITestListener.super.onTestStart(result);
         System.out.println("Testing started");
-        Report.createTest(result.getMethod().getMethodName());
+        Report.createTest(result.getMethod().getDescription());
 
     }
 
@@ -65,7 +65,7 @@ public class Listners implements ISuiteListener, ITestListener {
         System.out.println("Testing Failure");
         try {
             ExtendLogger.fail(result.getMethod().getMethodName() + "is failed",true);
-            ReportManager.StartTest().fail(MarkupHelper.createCodeBlock(Arrays.toString(result.getThrowable().getStackTrace()), CodeLanguage.valueOf("JAVA")));
+            ReportManager.StartTest().fail(MarkupHelper.createCodeBlock(Arrays.toString(result.getThrowable().getStackTrace())));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

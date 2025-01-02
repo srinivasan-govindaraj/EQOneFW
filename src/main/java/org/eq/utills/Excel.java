@@ -8,6 +8,7 @@ import org.eq.enums.Props;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,14 +19,14 @@ public final class  Excel {
 
     }
 
-    public static List<Map<String,String>> getTestData() throws Exception {
+    public static List<Map<Object,Object>> getData(String Sheetname) throws Exception {
         FileInputStream fileInputStream = new FileInputStream(Constants.getTestData()+Utills.getKey(Props.TESTDATA));
         XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
-        XSSFSheet xssfSheet = workbook.getSheetAt(0);
+        XSSFSheet xssfSheet = workbook.getSheet(Sheetname);
         int row = xssfSheet.getLastRowNum();
         int col = xssfSheet.getRow(0).getLastCellNum();
         HashMap<Object,Object> map ;
-        Object[] data = new Object[row];
+       List<Map<Object,Object>> testcase = new ArrayList<>();
         for(int i=1; i<=row;i++)
         {
             map = new HashMap<>();
@@ -34,11 +35,13 @@ public final class  Excel {
                 String key= xssfSheet.getRow(0).getCell(j).getStringCellValue();
                 String value = xssfSheet.getRow(i).getCell(j).getStringCellValue();
                 map.put(key,value);
-                data[i-1]=map;
+
+
             }
+            testcase.add(map);
         }
 
-        return List.of();
+        return testcase;
     }
 
 }

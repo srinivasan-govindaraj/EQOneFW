@@ -1,18 +1,21 @@
 package org.eq.listners;
 
+import org.eq.utills.Utills;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
 public class Retry  implements IRetryAnalyzer {
-    int count =0;
-    int limit =2;
+    private int count =0;
+    private int limit = Integer.parseInt(Utills.getValue("retrycount"));
+
+    public Retry() throws Exception {
+    }
+
     @Override
     public boolean retry(ITestResult iTestResult) {
-        if(count<limit)
-        {
+        boolean value = count<limit;
           count ++;
-          return true;
-        }
-        return false;
+          return value;
+
     }
 }

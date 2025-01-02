@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 import static org.eq.report.Report.flushReport;
 import static org.eq.report.Report.initReport;
@@ -29,10 +30,10 @@ protected BaseTests()
         flushReport();
     }*/
     @BeforeMethod
-    protected void setUp(Method method) throws Exception {
+    protected void setUp(Object[] data) throws Exception {
        // Report.createTest(method.getName());
-
-        Driver.initDriver();
+        Map<Object,Object> map = (Map<Object, Object>) data[0];
+        Driver.initDriver(map.get("browser").toString());
     }
 
     @AfterMethod

@@ -30,6 +30,7 @@ jobs:
       - name: Install Docker
         run: |
           sudo apt-get update
+          sudo apt-get install -y maven
           sudo apt-get install -y docker.io
           sudo systemctl start docker
           sudo systemctl enable docker
@@ -55,11 +56,11 @@ jobs:
           docker pull selenium/node-firefox:latest
 
       - name: Start Selenium Grid
-        run: docker-compose -f **/docker-compose.yml up -d
+        run: docker-compose -f .github/workflows/docker-compose.yml up -d
 
       - name: Run TestNG Suite
-        run: mvn clean test -DsuiteXmlFile=**/testng.xml
+        run: mvn clean test -DsuiteXmlFile=Config/testng.xml
 
       - name: Stop Selenium Grid
         if: always()
-        run: docker-compose -f **/docker-compose.yml down
+        run: docker-compose -f .github/workflows/docker-compose.yml down

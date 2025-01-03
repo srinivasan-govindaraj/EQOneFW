@@ -29,7 +29,7 @@ public final class Constants {
     public static String getCONFIG() {
         return CONFIG;
     }
-    public static String getExtentreport() throws Exception {
+    public static String getExtentreport()  {
         if(Utills.getKey(Props.NEWREPORT).equalsIgnoreCase("yes"))
         {
             return EXTENTREPORT+System.currentTimeMillis()+"/index.html";

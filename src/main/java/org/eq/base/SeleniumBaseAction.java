@@ -39,21 +39,15 @@ public class SeleniumBaseAction {
     {
         ExplicitWaitFactory.performExplicitWait(by,waitStrategy).click();
         //ExtendLogger.pass(by.toString()+"clicked");
-        try {
+
             ExtendLogger.pass(by.toString()+"clicked",true);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
 
     }
     protected void enterText(By by,String value,WaitStrategy waitStrategy )
     {
         ExplicitWaitFactory.performExplicitWait(by,waitStrategy).sendKeys(value);
-        try {
             ExtendLogger.pass("Value entered in element of: "+by.toString()+"="+value,true);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         // ExtendLogger.pass("Value entered in element of: "+by.toString()+"="+value);//less verbocity
        // ReportManager.StartTest().pass("UserName" + textboxUsername); // similar to extend
 

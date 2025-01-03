@@ -1,6 +1,7 @@
 package org.eq.factory;
 
 
+import org.eq.exception.FWException;
 import org.eq.utills.Utills;
 import org.eq.dataprovider.Jsonutill;
 import org.eq.enums.Props;
@@ -9,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -17,12 +19,22 @@ import java.util.Objects;
 import static org.eq.factory.DriverManager.*;
 
 public final class Driver {
+    /**
+     * <p>Driver class is sigle done class</p>
+     *
+     * @author EQ
+     * @version 1.0
+     * @Since 140999
+     * @param -browser-name to be passed
+     * @see DriverManager
+     * {@link org.eq.report.ExtendLogger}
+     */
     private Driver()
     {
 
     }
 
-    public static void initDriver(String browser) throws Exception {
+    public static void initDriver(String browser) {
 
             /* String seleniumVersion = "4.27.0";
             String command = String.format(
@@ -75,9 +87,13 @@ public final class Driver {
                         }});
 
                         /* How to enable video recording */
-                        put("enableVideo", true);
+                        put("enableVideo", false);
                     }});
-                    setDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options));
+                    try {
+                        setDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options));
+                    } catch (MalformedURLException e) {
+                        throw new FWException("URL is not correct");
+                    }
                     break;
             }
 

@@ -2,6 +2,7 @@ package org.eq.utills;
 
 import org.eq.constants.Constants;
 import org.eq.enums.Props;
+import org.eq.exception.Property;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -45,18 +46,18 @@ public final class Utills {
         }
     }
     //Hasmap--> Optional
-    public static String getKey(Props key) throws Exception {
+    public static String getKey(Props key) {
         if(Objects.isNull(key) || Objects.isNull(config.get(key.name().toLowerCase())))
         {
-            throw new Exception("Propery issue" + key + "is not working");
+            throw new Property("Propery issue" + key + "is not working");
         }
         return config.get(key.name().toLowerCase().trim());
     }
 //Hashtable little slow -- thread safe
-    public static String getValue(String key) throws Exception {
+    public static String getValue(String key)  {
         if (Objects.isNull(properties.getProperty(key)) || Objects.isNull(key) )
         {
-            throw new Exception("Propery issue" + key + "is not working");
+            throw new Property("Property issue" + key + "is not working");
         }
         return properties.getProperty(key);
     }

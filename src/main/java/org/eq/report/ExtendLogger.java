@@ -31,7 +31,7 @@ public final class ExtendLogger {
     {
         ReportManager.StartTest().info(message);
     }
-    public static void pass(String message,boolean isScreenshotNeeded) throws Exception {
+    public static void pass(String message,boolean isScreenshotNeeded)  {
         if(Utills.getKey(Props.PASSONLYSS).equalsIgnoreCase("yes") && isScreenshotNeeded)
         {
             ReportManager.StartTest().pass(message, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64()).build());
@@ -42,7 +42,7 @@ public final class ExtendLogger {
 
     }
 
-    public static void fail(String message,boolean isScreenshotNeeded) throws Exception {
+    public static void fail(String message,boolean isScreenshotNeeded) {
         if(Utills.getKey(Props.FAILEDONLYSS).equalsIgnoreCase("yes") && isScreenshotNeeded)
         {
             ReportManager.StartTest().fail(message, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64()).build());
@@ -52,7 +52,7 @@ public final class ExtendLogger {
         }
 
     }
-    public static void info(String message,boolean isScreenshotNeeded) throws Exception {
+    public static void info(String message,boolean isScreenshotNeeded)  {
         if(Utills.getKey(Props.FAILEDONLYSS).equalsIgnoreCase("yes") && isScreenshotNeeded)
         {
             ReportManager.StartTest().info(message, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64()).build());

@@ -16,11 +16,11 @@ public class ReportBase {
 
     }
     @BeforeSuite
-    public void beforeSuite() throws Exception {
+    public void beforeSuite()  {
         initReport();
     }
     @AfterSuite
-    public void finish() throws Exception {
+    public void finish()  {
         flushReport();
     }
 

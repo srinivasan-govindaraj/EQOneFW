@@ -3,6 +3,7 @@ package org.eq.listners;
 
 import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
+import org.eq.annotation.EQFrameworkAnnotation;
 import org.eq.factory.Driver;
 import org.eq.factory.ReportManager;
 import org.eq.report.ExtendLogger;
@@ -22,26 +23,15 @@ public class Listners implements ISuiteListener, ITestListener {
     public void onStart(ISuite suite) {
        // ISuiteListener.super.onStart(suite);
         System.out.println("Suite Started");
-        try {
             initReport();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     @Override
     public void onFinish(ISuite suite) {
         //ISuiteListener.super.onFinish(suite);
         System.out.println("Suite Ended");
-        try {
-            flushReport();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        flushReport();
     }
 
     @Override
@@ -49,6 +39,8 @@ public class Listners implements ISuiteListener, ITestListener {
         //ITestListener.super.onTestStart(result);
         System.out.println("Testing started");
         Report.createTest(result.getMethod().getDescription());
+       Report.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(EQFrameworkAnnotation.class).author());
+       Report.addCatagory(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(EQFrameworkAnnotation.class).category());
 
     }
 

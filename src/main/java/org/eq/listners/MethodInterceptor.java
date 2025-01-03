@@ -1,5 +1,6 @@
 package org.eq.listners;
 
+import org.eq.exception.File;
 import org.eq.utills.Excel;
 import org.testng.IMethodInstance;
 import org.testng.IMethodInterceptor;
@@ -8,6 +9,7 @@ import org.testng.ITestContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import static org.eq.utills.Excel.getData;
 
@@ -30,7 +32,12 @@ public class MethodInterceptor  implements IMethodInterceptor {
                     }
                 }
             }
+        } catch (File e) {
+            //Logger.getAnonymousLogger().info("File not found Exception");
+            throw new File("File not found Execption");
+
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
         return result;

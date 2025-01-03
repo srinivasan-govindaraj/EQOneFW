@@ -12,7 +12,7 @@ import java.time.Duration;
 import static org.eq.constants.Constants.getEXPLICITWAIT;
 import static org.eq.factory.DriverManager.getDriver;
 
-public class ExplicitWaitFactory {
+public final class ExplicitWaitFactory {
     private ExplicitWaitFactory()
     {
 

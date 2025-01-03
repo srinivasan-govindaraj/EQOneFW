@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eq.constants.Constants;
 import org.eq.enums.Props;
+import org.eq.exception.Property;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,10 +35,10 @@ public class Jsonutill {
         }
     }
 
-    public static String get(Props key) throws Exception {
+    public static String get(Props key)  {
         if(Objects.isNull(key) || Objects.isNull(CONFIG.get(key.name().toLowerCase())))
         {
-            throw new Exception("Propery is not found in Json file "+ key);
+            throw new Property("Propery is not found in Json file "+ key);
         }
         return (String) CONFIG.get(key.name().toLowerCase());
     }

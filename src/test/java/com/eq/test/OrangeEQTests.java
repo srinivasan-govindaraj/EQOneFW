@@ -31,7 +31,7 @@ public final class OrangeEQTests extends BaseTests{
     }
 
 @Test()
-    public void loginorm(Map<Object,Object>map) throws Exception {
+    public void loginorm(Map<Object,Object>map)  {
     getDriver().get(Utills.getKey(Props.URL));
     getDriver().manage().window().maximize();
     getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -46,7 +46,7 @@ public final class OrangeEQTests extends BaseTests{
 
 }
     @Test
-    public void loginorm1(Map<Object,Object>map) throws Exception {
+    public void loginorm1(Map<Object,Object>map)  {
         getDriver().get(Utills.getKey(Props.URL));
         getDriver().manage().window().maximize();
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

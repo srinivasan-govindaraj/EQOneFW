@@ -30,7 +30,7 @@ protected BaseTests()
         flushReport();
     }*/
     @BeforeMethod
-    protected void setUp(Object[] data) throws Exception {
+    protected void setUp(Object[] data)  {
        // Report.createTest(method.getName());
         Map<Object,Object> map = (Map<Object, Object>) data[0];
         Driver.initDriver(map.get("browser").toString());

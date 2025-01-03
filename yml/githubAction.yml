@@ -1,0 +1,38 @@
+name: Selenium Tests
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Start Selenium Grid
+        run: docker-compose -f **/docker-compose.yml up -d
+
+      - name: Run TestNG Suite
+        run: mvn clean test -DsuiteXmlFile=**/testng.xml
+
+      - name: Stop Selenium Grid
+        if: always()
+        run: docker-compose -f **/docker-compose.yml down

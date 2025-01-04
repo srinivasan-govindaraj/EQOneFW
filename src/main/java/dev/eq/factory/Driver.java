@@ -8,8 +8,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -87,9 +89,14 @@ public final class Driver {
                         put("enableVideo", false);
                     }});
                     try {
-                        setDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options));
+                        InetAddress localhost = InetAddress.getLocalHost();
+                        String ipAddress = localhost.getHostAddress();
+                        System.out.println("System IP Address: " + ipAddress);
+                        setDriver(new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), options));
                     } catch (MalformedURLException e) {
                         throw new FWException("URL is not correct");
+                    } catch (UnknownHostException e) {
+                        throw new RuntimeException(e);
                     }
                     break;
             }

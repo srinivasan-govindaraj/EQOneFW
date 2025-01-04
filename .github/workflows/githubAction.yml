@@ -57,10 +57,6 @@ jobs:
       - name: Install jq
         run: sudo apt-get install -y jq
 
-
-      - name: Start Selenium Grid
-        run: docker-compose -f .github/workflows/docker-compose.yml up -d
-
       - name: Start Selenium Grid
         run: docker-compose -f .github/workflows/docker-compose.yml up -d
 

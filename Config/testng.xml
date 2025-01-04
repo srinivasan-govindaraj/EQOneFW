@@ -2,16 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" verbose="10" thread-count="2" parallel="tests" data-provider-thread-count="2">
     <listeners>
-        <listener class-name="org.eq.listners.Listners"></listener>
-        <listener class-name="org.eq.listners.MethodInterceptor"></listener>
-        <listener class-name="org.eq.listners.AnnotationTransformer"></listener>
+        <listener class-name="dev.eq.listners.Listners"></listener>
+        <listener class-name="dev.eq.listners.MethodInterceptor"></listener>
+        <listener class-name="dev.eq.listners.AnnotationTransformer"></listener>
     </listeners>
     <test verbose="2" preserve-order="false" name="EQ"  >
         <classes>
-           <!-- <class name="com.eq.test.LoginPageTests"/>-->
-            <class name="com.eq.test.OrangeEQTests"/>
-            <class name="com.eq.test.AmazonDemo"></class>
-                <!--<class name="com.eq.test.HomePageTests"/>-->
+           <!-- <class name="test.test.eq.LoginPageTests"/>-->
+            <class name="test.eq.test.OrangeEQTests"/>
+            <class name="test.eq.test.AmazonDemo"></class>
+                <!--<class name="test.test.eq.HomePageTests"/>-->
         </classes>
         </test>
 </suite>

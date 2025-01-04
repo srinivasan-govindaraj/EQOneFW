@@ -1,0 +1,12 @@
+package dev.eq.enums;
+
+public enum Props {
+    URL,
+    UNAME,
+    PASSWORD,
+    NEWREPORT,
+    PASSONLYSS,
+    FAILEDONLYSS,
+    TESTDATA;
+
+}

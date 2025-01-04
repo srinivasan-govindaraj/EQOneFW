@@ -6,30 +6,30 @@
     <groups>
     </groups>
     <test started-at="2024-12-31T15:44:30 JST" name="EQ" finished-at="2024-12-31T15:44:37 JST" duration-ms="7566">
-      <class name="com.eq.test.OrangeEQTests">
-        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:30 JST" name="setUp" finished-at="2024-12-31T15:44:34 JST" duration-ms="3952" status="PASS">
+      <class name="test.test.eq.OrangeEQTests">
+        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:30 JST" name="setUp" finished-at="2024-12-31T15:44:34 JST" duration-ms="3952" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.eq.test.OrangeEQTests.loginorm(java.util.Map) throws java.lang.Exception]]>
+                <![CDATA[public void test.test.eq.OrangeEQTests.loginorm(java.util.Map) throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:30 JST" name="setUp" finished-at="2024-12-31T15:44:34 JST" duration-ms="3952" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:30 JST" name="setUp" finished-at="2024-12-31T15:44:34 JST" duration-ms="3952" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.eq.test.OrangeEQTests.loginorm(java.util.Map) throws java.lang.Exception]]>
+                <![CDATA[public void test.test.eq.OrangeEQTests.loginorm(java.util.Map) throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="loginorm(java.util.Map)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:34 JST" name="loginorm" data-provider="eq" finished-at="2024-12-31T15:44:37 JST" duration-ms="3290" status="PASS">
+        <test-method signature="loginorm(java.util.Map)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:34 JST" name="loginorm" data-provider="eq" finished-at="2024-12-31T15:44:37 JST" duration-ms="3290" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -40,7 +40,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginorm -->
-        <test-method signature="loginorm(java.util.Map)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:34 JST" name="loginorm" data-provider="eq" finished-at="2024-12-31T15:44:37 JST" duration-ms="3237" status="PASS">
+        <test-method signature="loginorm(java.util.Map)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:34 JST" name="loginorm" data-provider="eq" finished-at="2024-12-31T15:44:37 JST" duration-ms="3237" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -51,29 +51,29 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginorm -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:37 JST" name="tearDown" finished-at="2024-12-31T15:44:37 JST" duration-ms="105" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:37 JST" name="tearDown" finished-at="2024-12-31T15:44:37 JST" duration-ms="105" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=loginorm status=SUCCESS method=OrangeEQTests.loginorm(java.util.Map)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2] output={null}]]]>
+                <![CDATA[[TestResult name=loginorm status=SUCCESS method=OrangeEQTests.loginorm(java.util.Map)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:37 JST" name="tearDown" finished-at="2024-12-31T15:44:37 JST" duration-ms="83" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2]" started-at="2024-12-31T15:44:37 JST" name="tearDown" finished-at="2024-12-31T15:44:37 JST" duration-ms="83" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=loginorm status=SUCCESS method=OrangeEQTests.loginorm(java.util.Map)[pri:0, instance:com.eq.test.OrangeEQTests@363ee3a2] output={null}]]]>
+                <![CDATA[[TestResult name=loginorm status=SUCCESS method=OrangeEQTests.loginorm(java.util.Map)[pri:0, instance:test.test.eq.OrangeEQTests@363ee3a2] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.eq.test.OrangeEQTests -->
+      </class> <!-- test.test.eq.OrangeEQTests -->
     </test> <!-- EQ -->
   </suite> <!-- All Test Suite -->
 </testng-results>

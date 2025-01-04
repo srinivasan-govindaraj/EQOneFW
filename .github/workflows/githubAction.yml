@@ -54,9 +54,30 @@ jobs:
           docker pull selenium/hub:latest
           docker pull selenium/node-chrome:latest
           docker pull selenium/node-firefox:latest
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
 
       - name: Start Selenium Grid
         run: docker-compose -f .github/workflows/docker-compose.yml up -d
+
+      - name: Start Selenium Grid
+        run: docker-compose -f .github/workflows/docker-compose.yml up -d
+
+      - name: Wait for Selenium Grid to be ready
+        run: |
+          max_retries=30
+          retry_interval=10
+          for i in $(seq 1 $max_retries); do
+            if curl -sSL "http://localhost:4444/wd/hub/status" | jq -r '.value.ready' | grep "true" > /dev/null; then
+              echo "Selenium Grid is up and ready"
+              exit 0
+            fi
+            echo "Waiting for Selenium Grid to be ready... (Attempt $i/$max_retries)"
+            sleep $retry_interval
+          done
+          echo "Selenium Grid did not become ready in time"
+          exit 1
 
       - name: Run TestNG Suite
         run: mvn clean test

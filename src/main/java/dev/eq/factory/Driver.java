@@ -66,7 +66,7 @@ public final class Driver {
                     break;
                 case "chromegrid":
                     ChromeOptions options = new ChromeOptions();
-                    options.setCapability("browserVersion", "latest");
+                   // options.setCapability("browserVersion", "latest");
                     options.setCapability("selenoid:options", new HashMap<String, Object>() {{
                         /* How to add test badge */
                         put("name", "EQOneFW");

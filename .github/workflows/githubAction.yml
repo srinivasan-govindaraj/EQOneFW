@@ -34,7 +34,7 @@ jobs:
             browsers: chrome
             last-versions: 1
       - name: Restore Maven cache
-        uses: skjolber/maven-cache-github-action@v4
+        uses: skjolber/maven-cache-github-action@v1
         continue-on-error: true
         with:
           step: restore
@@ -56,7 +56,7 @@ jobs:
          name: Selenium Test Results
          path: test-output/**/*
       - name: Save Maven cache
-        uses: skjolber/maven-cache-github-action@v4
+        uses: skjolber/maven-cache-github-action@v1
         continue-on-error: true
         with:
           step: save

@@ -51,7 +51,7 @@ jobs:
         run: export DISPLAY=:99
 
       - name: Run tests with Xvfb
-        run: xvfb-run mvn test
+        run: xvfb-run mvn test -Djava.awt.headless=true
 
 
       - name: Publish TestNG Report

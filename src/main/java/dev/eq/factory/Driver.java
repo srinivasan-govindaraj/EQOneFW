@@ -92,7 +92,7 @@ public final class Driver {
                         InetAddress localhost = InetAddress.getLocalHost();
                         String ipAddress = localhost.getHostAddress();
                         System.out.println("System IP Address: " + ipAddress);
-                        setDriver(new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), options));
+                        setDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options));
                     } catch (MalformedURLException e) {
                         throw new FWException("URL is not correct");
                     } catch (UnknownHostException e) {

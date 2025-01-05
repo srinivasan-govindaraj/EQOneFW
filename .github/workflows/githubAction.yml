@@ -1,4 +1,7 @@
 name: Selenium Tests
+permissions:
+  checks: write
+  contents: read
 
 on:
   push:

@@ -28,7 +28,15 @@
         <TestDataSupplier.version>2.3.0</TestDataSupplier.version>
         <Zerocell.version>0.5.1</Zerocell.version>
         <NoException.version>1.9.1</NoException.version>
-
+        <MavenSurefirePlugin.version>3.5.2</MavenSurefirePlugin.version>
+        <curl.logger.version>2.1.1</curl.logger.version>
+        <pact.version>4.6.16</pact.version>
+        <pact.plugin.version>4.2.2</pact.plugin.version>
+        <httpcore5.version>5.3.1</httpcore5.version>
+        <SpringBoot.version>3.4.1</SpringBoot.version>
+        <SpringBootTest.version>6.2.1</SpringBootTest.version>
+        <Junit.version>5.11.4</Junit.version>
+        <JunitSpring.version>4.6.16</JunitSpring.version>
     </properties>
 
     <dependencies>
@@ -147,6 +155,13 @@
             <artifactId>rest-assured</artifactId>
             <version>${RestAssured.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${RestAssured.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -171,18 +186,90 @@
             <artifactId>noexception</artifactId>
             <version>${NoException.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.core5/httpcore5 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.core5</groupId>
+            <artifactId>httpcore5</artifactId>
+            <version>${httpcore5.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/au.com.dius.pact.consumer/junit5 -->
+        <dependency>
+            <groupId>au.com.dius.pact.consumer</groupId>
+            <artifactId>junit5</artifactId>
+            <version>${pact.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5 -->
+        <dependency>
+            <groupId>au.com.dius.pact.provider</groupId>
+            <artifactId>junit5</artifactId>
+            <version>${pact.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${SpringBoot.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${SpringBoot.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${SpringBootTest.version}</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${Junit.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5spring -->
+        <dependency>
+            <groupId>au.com.dius.pact.provider</groupId>
+            <artifactId>junit5spring</artifactId>
+            <version>${JunitSpring.version}</version>
+        </dependency>
 
     </dependencies>
 <build>
     <plugins>
+
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.5.2</version>
+            <version>${MavenSurefirePlugin.version}</version>
             <configuration>
                 <suiteXmlFiles>
                     <suiteXmlFile>${SuiteXmlFile}</suiteXmlFile>
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <forkCount>0</forkCount>
                 </suiteXmlFiles>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>au.com.dius.pact.provider</groupId>
+            <artifactId>maven</artifactId>
+            <version>${pact.plugin.version}</version>
+            <configuration>
+                <pactDirectory>target/pacts</pactDirectory>
+                <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
+                <!--suppress UnresolvedMavenProperty -->
+                <pactBrokerToken>${pactbroker.auth.token}</pactBrokerToken>
+                <projectVersion>${project.version}</projectVersion>
+                <trimSnapshot>true</trimSnapshot>
             </configuration>
         </plugin>
 

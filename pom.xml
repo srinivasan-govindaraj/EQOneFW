@@ -192,55 +192,56 @@
             <artifactId>httpcore5</artifactId>
             <version>${httpcore5.version}</version>
         </dependency>
+<!-- Please uncomment for the pact Testing -->
+<!--        -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/au.com.dius.pact.consumer/junit5 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius.pact.consumer</groupId>-->
+<!--            <artifactId>junit5</artifactId>-->
+<!--            <version>${pact.version}</version>-->
+<!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/au.com.dius.pact.consumer/junit5 -->
-        <dependency>
-            <groupId>au.com.dius.pact.consumer</groupId>
-            <artifactId>junit5</artifactId>
-            <version>${pact.version}</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius.pact.provider</groupId>-->
+<!--            <artifactId>junit5</artifactId>-->
+<!--            <version>${pact.version}</version>-->
+<!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5 -->
-        <dependency>
-            <groupId>au.com.dius.pact.provider</groupId>
-            <artifactId>junit5</artifactId>
-            <version>${pact.version}</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter</artifactId>-->
+<!--            <version>${SpringBoot.version}</version>-->
+<!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${SpringBoot.version}</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <version>${SpringBoot.version}</version>-->
+<!--        </dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${SpringBoot.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${SpringBootTest.version}</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-test &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-test</artifactId>-->
+<!--            <version>${SpringBootTest.version}</version>-->
+<!--        </dependency>-->
 
 
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${Junit.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5spring -->
-        <dependency>
-            <groupId>au.com.dius.pact.provider</groupId>
-            <artifactId>junit5spring</artifactId>
-            <version>${JunitSpring.version}</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <version>${Junit.version}</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5spring &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius.pact.provider</groupId>-->
+<!--            <artifactId>junit5spring</artifactId>-->
+<!--            <version>${JunitSpring.version}</version>-->
+<!--        </dependency> -->
 
     </dependencies>
 <build>

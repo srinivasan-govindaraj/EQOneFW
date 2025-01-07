@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 
 @SpringBootTest(classes = Main.class)
@@ -32,7 +33,6 @@ public class PactAgeProviderTest {
     @BeforeEach
     void setUp(PactVerificationContext context) {
         context.setTarget(new HttpTestTarget("localhost", 8080, "/"));
-        RestAssured.baseURI = "http://localhost:8081";
     }
     @TestTemplate
     @ExtendWith(PactVerificationInvocationContextProvider.class)
@@ -40,22 +40,25 @@ public class PactAgeProviderTest {
         context.verifyInteraction();
     }
 
-   // @LocalServerPort
-    //private int port;
+    @LocalServerPort
+    private int port;
 
-//    @BeforeAll
-//    static void enablePublishingPact() {
-//        System.setProperty("pact.verifier.publishResults", "true");
-//    }
-//
-//    @BeforeEach
-//    void before(PactVerificationContext context) {
-//        context.setTarget(new HttpTestTarget("localhost", port));
-//    }
+
+
+    @BeforeAll
+    static void enablePublishingPact() {
+        System.setProperty("pact.verifier.publishResults", "true");
+    }
+
+    @BeforeEach
+    void before(PactVerificationContext context) {
+        context.setTarget(new HttpTestTarget("localhost", port));
+    }
 
 
 
     @State("valid date received from provider")
     public void validDateProvider() {
+
     }
 }

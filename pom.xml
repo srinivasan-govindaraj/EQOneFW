@@ -259,19 +259,19 @@
             </configuration>
         </plugin>
 
-        <plugin>
+       <!-- <plugin>
             <groupId>au.com.dius.pact.provider</groupId>
             <artifactId>maven</artifactId>
             <version>${pact.plugin.version}</version>
             <configuration>
                 <pactDirectory>target/pacts</pactDirectory>
                 <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
-                <!--suppress UnresolvedMavenProperty -->
+                &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
                 <pactBrokerToken>${pactbroker.auth.token}</pactBrokerToken>
                 <projectVersion>${project.version}</projectVersion>
                 <trimSnapshot>true</trimSnapshot>
             </configuration>
-        </plugin>
+        </plugin>-->
 
     </plugins>
 </build>

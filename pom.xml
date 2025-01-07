@@ -254,7 +254,7 @@
             <configuration>
                 <suiteXmlFiles>
                     <suiteXmlFile>${SuiteXmlFile}</suiteXmlFile>
-                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+<!--                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
                     <forkCount>0</forkCount>
                 </suiteXmlFiles>
             </configuration>

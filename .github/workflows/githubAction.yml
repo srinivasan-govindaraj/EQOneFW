@@ -29,7 +29,7 @@ jobs:
 
       - name: Set up Selenoid with X11 support
         run: |
-          docker pull selenoid/vnc_chrome:latest
+          docker pull docker pull selenoid/vnc_chrome:128.0
           docker pull selenoid/video-recorder:latest-release
           curl -s https://aerokube.com/cm/bash | bash
           ./cm selenoid start --vnc

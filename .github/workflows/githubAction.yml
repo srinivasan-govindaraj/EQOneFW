@@ -28,22 +28,23 @@ jobs:
         uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
 
-      # Solution 1: Set DISPLAY Variable
-      - name: Set DISPLAY Variable
-        run: export DISPLAY=:0
+      # Solution 1: Install X11 utilities
+      - name: Install X11 utilities
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y x11-xserver-utils
 
-      # Solution 2: Use Xvfb
-      - name: Install and Run Xvfb
+      # Solution 2: Set up Xvfb
+      - name: Set up Xvfb
         run: |
           sudo apt-get install -y xvfb
-          Xvfb :99 -screen 0 1024x768x24 &
+          Xvfb :99 -ac &
           export DISPLAY=:99
 
-      # Solution 3: Docker-Specific Configuration
-      - name: Allow Docker X11 Connections
-        run: xhost +local:docker
+      # Solution 3: Configure tests for headless mode
+      - name: Set Java AWT Headless Property
+        run: echo "JAVA_OPTS=-Djava.awt.headless=true" >> $GITHUB_ENV
 
-      # Solution 4: Use Selenoid with VNC Support
       - name: Set up Selenoid with X11 support
         run: |
           docker pull selenoid/vnc_chrome:128.0
@@ -54,16 +55,6 @@ jobs:
       - name: Start Selenoid UI
         run: |
           ./cm selenoid-ui start
-
-      # Solution 5: Modify Application to Run Headlessly
-      - name: Set Java AWT Headless Property
-        run: echo "JAVA_OPTS=-Djava.awt.headless=true" >> $GITHUB_ENV
-
-      # Solution 6: Debugging Tips
-      - name: Debug X11 Setup
-        run: |
-          echo "DISPLAY variable: $DISPLAY"
-          ps aux | grep Xvfb
 
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1

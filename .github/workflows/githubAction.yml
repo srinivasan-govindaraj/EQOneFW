@@ -1,4 +1,5 @@
 name: Selenium Tests
+
 permissions:
   checks: write
   contents: read
@@ -27,6 +28,22 @@ jobs:
         uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
 
+      # Solution 1: Set DISPLAY Variable
+      - name: Set DISPLAY Variable
+        run: export DISPLAY=:0
+
+      # Solution 2: Use Xvfb
+      - name: Install and Run Xvfb
+        run: |
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1024x768x24 &
+          export DISPLAY=:99
+
+      # Solution 3: Docker-Specific Configuration
+      - name: Allow Docker X11 Connections
+        run: xhost +local:docker
+
+      # Solution 4: Use Selenoid with VNC Support
       - name: Set up Selenoid with X11 support
         run: |
           docker pull selenoid/vnc_chrome:128.0
@@ -38,6 +55,16 @@ jobs:
         run: |
           ./cm selenoid-ui start
 
+      # Solution 5: Modify Application to Run Headlessly
+      - name: Set Java AWT Headless Property
+        run: echo "JAVA_OPTS=-Djava.awt.headless=true" >> $GITHUB_ENV
+
+      # Solution 6: Debugging Tips
+      - name: Debug X11 Setup
+        run: |
+          echo "DISPLAY variable: $DISPLAY"
+          ps aux | grep Xvfb
+
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1
         continue-on-error: true
@@ -46,6 +73,8 @@ jobs:
 
       - name: Run tests with maven
         run: mvn test
+        env:
+          JAVA_OPTS: ${{ env.JAVA_OPTS }}
 
       - name: Publish TestNG Report
         uses: starburstdata/action-testng-report@master

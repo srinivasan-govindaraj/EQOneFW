@@ -34,7 +34,7 @@ public final class Driver {
     }
 
     public static void initDriver(String browser) {
-
+        ChromeOptions options = new ChromeOptions();
             /* String seleniumVersion = "4.27.0";
             String command = String.format(
                     "java -jar /Users/srinivasangovindaraj/IdeaProjects/FW/EQOneFW/Selenium_Grid/selenium-server-4.27.0.jar standalone --driver-configuration display-name=\"Chrome\" max-sessions=10 stereotype=\"{\\\"browserName\\\":\\\"chrome\\\"}\"",
@@ -59,13 +59,16 @@ public final class Driver {
             switch (browser)
             {
                 case "chrome":
-                    setDriver(new ChromeDriver());
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                    options.addArguments("--headless");
+                    setDriver(new ChromeDriver(options));
                     break;
                 case "safari":
                     setDriver(new SafariDriver());
                     break;
                 case "chromegrid":
-                    ChromeOptions options = new ChromeOptions();
+
                    // options.setCapability("browserVersion", "latest");
                     options.setCapability("selenoid:options", new HashMap<String, Object>() {{
                         /* How to add test badge */

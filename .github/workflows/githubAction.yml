@@ -23,10 +23,16 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+      - uses: browser-actions/setup-chrome@latest
+      - run: chrome --version
 
-      - name: Store docker image cache
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
+      - name: Build with Maven
+        run: mvn -B clean test
+
+#      - name: Store docker image cache
+#        uses: satackey/action-docker-layer-caching@v0.0.11
+#        continue-on-error: true
+
 
 #      # Solution 1: Install X11 utilities
 #      - name: Install X11 utilities
@@ -62,14 +68,14 @@ jobs:
         continue-on-error: true
         with:
           step: restore
-      - name: Set up Selenium Grid
-        run: |
-            wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.27.0/selenium-server-4.27.0.jar
-            java -jar selenium-server-4.27.0.jar hub &
-            java -jar selenium-server-4.27.0.jar node --detect-drivers true &
+#      - name: Set up Selenium Grid
+#        run: |
+#            wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.27.0/selenium-server-4.27.0.jar
+#            java -jar selenium-server-4.27.0.jar hub &
+#            java -jar selenium-server-4.27.0.jar node --detect-drivers true &
 
-      - name: Run tests with maven
-        run: mvn test
+#      - name: Run tests with maven
+#        run: mvn test
 #        env:
 #          JAVA_OPTS: ${{ env.JAVA_OPTS }}
 
@@ -93,8 +99,8 @@ jobs:
         with:
           step: save
 
-      - name: Stop Selenoid
-        if: always()
-        run: |
-          ./cm selenoid stop
-          ./cm selenoid-ui stop
+#      - name: Stop Selenoid
+#        if: always()
+#        run: |
+#          ./cm selenoid stop
+#          ./cm selenoid-ui stop

@@ -23,21 +23,20 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: store docker image cache
+      - name: Store docker image cache
         uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
 
-      - name: Start Selenoid server
-        uses: n-ton4/selenoid-github-action@master
-        id: start-selenoid
-        continue-on-error: false
-        with:
-          version: 1.10.1
-          args: -limit 10 -service-startup-timeout 60s
-          browsers: chrome
-          last-versions: 1
-          selenoid-start-arguments: |
-            --vnc
+      - name: Set up Selenoid with X11 support
+        run: |
+          docker pull selenoid/vnc_chrome:latest
+          docker pull selenoid/video-recorder:latest-release
+          curl -s https://aerokube.com/cm/bash | bash
+          ./cm selenoid start --vnc
+
+      - name: Start Selenoid UI
+        run: |
+          ./cm selenoid-ui start
 
       - name: Restore Maven cache
         uses: skjolber/maven-cache-github-action@v1
@@ -45,23 +44,8 @@ jobs:
         with:
           step: restore
 
-      - name: Install Chrome
-        run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install ./google-chrome-stable_current_amd64.deb
-      
-      
-
-      #      - name: Set up Xvfb
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y xvfb
-#      - name: Set DISPLAY
-#        run: export DISPLAY=:99
-
       - name: Run tests with maven
         run: mvn test
-
 
       - name: Publish TestNG Report
         uses: starburstdata/action-testng-report@master
@@ -74,10 +58,17 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-         name: Selenium Test Results
-         path: test-output/**/*
+          name: Selenium Test Results
+          path: test-output/**/*
+
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
         continue-on-error: true
         with:
           step: save
+
+      - name: Stop Selenoid
+        if: always()
+        run: |
+          ./cm selenoid stop
+          ./cm selenoid-ui stop

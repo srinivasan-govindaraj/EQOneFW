@@ -1,5 +1,7 @@
 package test.eq.test;
 
+
+import com.aventstack.chaintest.conf.Configuration;
 import test.eq.pages.AmazonHome;
 import org.assertj.core.api.Assertions;
 import dev.eq.annotation.EQFrameworkAnnotation;
@@ -7,6 +9,7 @@ import dev.eq.enums.Category;
 import dev.eq.report.ExtendLogger;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Map;
 
@@ -21,8 +24,7 @@ public final class AmazonDemo extends BaseTests{
 
     @EQFrameworkAnnotation(author = {"EQ","JaiSriram"},category ={Category.SMOKE,Category.REGRESSION})
     @Test
-    public void testAmazon(Map<Object,Object> map)
-    {
+    public void testAmazon(Map<Object,Object> map)  {
         getDriver().get("https://www.amazon.in/");
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         getDriver().manage().window().maximize();

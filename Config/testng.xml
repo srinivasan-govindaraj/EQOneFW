@@ -2,9 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" verbose="10" thread-count="2" parallel="tests" data-provider-thread-count="2">
     <listeners>
-        <listener class-name="dev.eq.listners.Listners"></listener>
-        <listener class-name="dev.eq.listners.MethodInterceptor"></listener>
-        <listener class-name="dev.eq.listners.AnnotationTransformer"></listener>
+        <listener class-name="dev.eq.listners.Listners"/>
+        <listener class-name="dev.eq.listners.MethodInterceptor"/>
+        <listener class-name="dev.eq.listners.AnnotationTransformer"/>
+     <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
     </listeners>
     <test verbose="2" preserve-order="false" name="EQ"  >
         <classes>

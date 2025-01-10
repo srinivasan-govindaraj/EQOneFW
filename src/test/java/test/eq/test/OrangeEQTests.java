@@ -1,8 +1,12 @@
 package test.eq.test;
 
+
+import com.aventstack.chaintest.conf.Configuration;
+import com.aventstack.chaintest.conf.ConfigurationManager;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.enums.Category;
+
 import test.eq.pages.Login;
 
 import static dev.eq.factory.DriverManager.getDriver;
@@ -28,9 +32,11 @@ public final class OrangeEQTests extends BaseTests{
     {
 
     }
+    @Test()
     @EQFrameworkAnnotation(author = {"EQ","JaiSriram"},category ={Category.SMOKE,Category.REGRESSION})
-@Test()
-    public void loginorm(Map<Object,Object>map)  {
+
+    public void loginorm(Map<Object,Object>map){
+
     getDriver().get(Utills.getKey(Props.URL));
     getDriver().manage().window().maximize();
     getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

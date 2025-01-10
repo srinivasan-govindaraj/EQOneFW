@@ -26,5 +26,6 @@ public class AnnotationTransformer implements IAnnotationTransformer {
 
         annotation.setDataProvider("getTestData");
         annotation.setDataProviderClass(DataProviders.class);
+
     }
 }

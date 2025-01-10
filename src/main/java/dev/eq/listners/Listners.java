@@ -1,6 +1,7 @@
 package dev.eq.listners;
 
 
+import com.aventstack.chaintest.conf.Configuration;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.factory.ReportManager;
@@ -8,6 +9,7 @@ import dev.eq.report.ExtendLogger;
 import dev.eq.report.Report;
 import org.testng.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
@@ -22,6 +24,11 @@ public class Listners implements ISuiteListener, ITestListener {
        // ISuiteListener.super.onStart(suite);
         Logger.getAnonymousLogger().info("Suite Started");
             initReport();
+        try {
+            new Configuration().loadFromClasspathResource("src/test/resources/chaintest.properties");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

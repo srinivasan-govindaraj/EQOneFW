@@ -51,7 +51,7 @@ jobs:
 #      - name: Set Java AWT Headless Property
 #        run: echo "JAVA_OPTS=-Djava.awt.headless=true" >> $GITHUB_ENV
 #
-#      - name: Set up Selenoid with X11 support
+#      - name: Set up docker-compose-selenoid.yml with X11 support
 #        run: |
 #          docker pull selenoid/vnc_chrome:128.0
 #          docker pull selenoid/video-recorder:latest-release
@@ -59,7 +59,7 @@ jobs:
 #          curl -s https://aerokube.com/cm/bash | bash
 #          ./cm selenoid start --vnc
 #
-#      - name: Start Selenoid UI
+#      - name: Start docker-compose-selenoid.yml UI
 #        run: |
 #          ./cm selenoid-ui start
 
@@ -99,7 +99,7 @@ jobs:
         with:
           step: save
 
-#      - name: Stop Selenoid
+#      - name: Stop docker-compose-selenoid.yml
 #        if: always()
 #        run: |
 #          ./cm selenoid stop

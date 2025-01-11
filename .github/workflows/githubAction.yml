@@ -2,7 +2,7 @@ name: Selenium Tests
 
 permissions:
   checks: write
-  contents: read
+  contents: write
 
 on:
   push:

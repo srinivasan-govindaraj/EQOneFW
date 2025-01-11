@@ -24,7 +24,7 @@
         <!-- report name - displayed at top-nav -->
         <reportName>
             <![CDATA[
-                <img src='https://github.com/srinivasan-govindaraj/EQOneFW/blob/dev/test-output/Report/logo/eq.png' alt='EQ I Love You' />
+                <img src='https://raw.githubusercontent.com/srinivasan-govindaraj/EQOneFW/refs/heads/dev/test-output/Report/logo/eq.png' alt='EQ I Love You' />
 <!--                <img src='../logo/eq.png' alt='EQ I Love You' />-->
             ]]>
         </reportName>

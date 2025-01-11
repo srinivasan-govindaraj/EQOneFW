@@ -34,18 +34,18 @@ jobs:
         continue-on-error: true
 
 
-      # Solution 1: Install X11 utilities
-      - name: Install X11 utilities
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y x11-xserver-utils
-
-      # Solution 2: Set up Xvfb
-      - name: Set up Xvfb
-        run: |
-          sudo apt-get install -y xvfb
-          Xvfb :99 -ac &
-          export DISPLAY=:99
+#      # Solution 1: Install X11 utilities
+#      - name: Install X11 utilities
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y x11-xserver-utils
+#
+#      # Solution 2: Set up Xvfb
+#      - name: Set up Xvfb
+#        run: |
+#          sudo apt-get install -y xvfb
+#          Xvfb :99 -ac &
+#          export DISPLAY=:99
 
       # Solution 3: Configure tests for headless mode
       - name: Set Java AWT Headless Property
@@ -70,9 +70,9 @@ jobs:
           step: restore
 
       - name: Run tests with maven
-        run: xvfb-run mvn test
-        env:
-          JAVA_OPTS: ${{ env.JAVA_OPTS }}
+        run: mvn -fn test
+#        env:
+#          JAVA_OPTS: ${{ env.JAVA_OPTS }}
 
       - name: Publish TestNG Report
         uses: starburstdata/action-testng-report@master

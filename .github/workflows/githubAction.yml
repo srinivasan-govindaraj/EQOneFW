@@ -68,16 +68,11 @@ jobs:
         continue-on-error: true
         with:
           step: restore
-#      - name: Set up Selenium Grid
-#        run: |
-#            wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.27.0/selenium-server-4.27.0.jar
-#            java -jar selenium-server-4.27.0.jar hub &
-#            java -jar selenium-server-4.27.0.jar node --detect-drivers true &
 
-#      - name: Run tests with maven
-#        run: mvn test
-#        env:
-#          JAVA_OPTS: ${{ env.JAVA_OPTS }}
+      - name: Run tests with maven
+        run: mvn test
+        env:
+          JAVA_OPTS: ${{ env.JAVA_OPTS }}
 
       - name: Publish TestNG Report
         uses: starburstdata/action-testng-report@master

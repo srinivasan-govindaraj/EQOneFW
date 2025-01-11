@@ -76,7 +76,7 @@ public final class Driver {
 
                         /* How to set session timeout */
                         put("sessionTimeout", "15m");
-                        put("enableVNC",false);
+                        put("enableVNC",true);
 
                         /* How to set timezone */
                         put("env", new ArrayList<String>() {{

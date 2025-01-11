@@ -5,7 +5,7 @@
         <listener class-name="dev.eq.listners.Listners"/>
         <listener class-name="dev.eq.listners.MethodInterceptor"/>
         <listener class-name="dev.eq.listners.AnnotationTransformer"/>
-     <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
+   <!--  <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>-->
     </listeners>
     <test verbose="2" preserve-order="false" name="EQ"  >
         <classes>

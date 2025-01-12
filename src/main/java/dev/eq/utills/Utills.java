@@ -4,6 +4,9 @@ import dev.eq.constants.Constants;
 import dev.eq.enums.Props;
 import dev.eq.exception.Property;
 
+import dev.eq.props.Configs;
+import org.aeonbits.owner.ConfigCache;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
+
 
 public final class Utills {
     /**
@@ -68,5 +72,10 @@ public final class Utills {
             throw new Property("Property issue" + key + "is not working");
         }
         return properties.getProperty(key);
+    }
+
+    public static String getConfigOwner(Props props)
+    {
+        return ConfigCache.getOrCreate(Configs.class).getValue(props.name());
     }
 }

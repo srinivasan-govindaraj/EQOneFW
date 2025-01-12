@@ -7,6 +7,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.enums.Category;
 
+import dev.eq.log.BaseLogger;
 import test.eq.pages.Login;
 
 import static dev.eq.factory.DriverManager.getDriver;
@@ -32,7 +33,7 @@ public final class OrangeEQTests extends BaseTests{
     {
 
     }
-    @Test()
+    @Test
     @EQFrameworkAnnotation(author = {"EQ","JaiSriram"},category ={Category.SMOKE,Category.REGRESSION})
 
     public void loginorm(Map<Object,Object>map){
@@ -40,6 +41,7 @@ public final class OrangeEQTests extends BaseTests{
     getDriver().get(Utills.getKey(Props.URL));
     getDriver().manage().window().maximize();
     getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    BaseLogger.logger.info(Jsonutill.get(Props.URL));
     System.out.println(Jsonutill.get(Props.URL));
     String title = new Login().enterUserName(map.get("uname").toString())
             .enterPassword(map.get("password").toString())
@@ -50,6 +52,8 @@ public final class OrangeEQTests extends BaseTests{
     ReportManager.StartTest().pass(MarkupHelper.createUnorderedList(map).getMarkup());
 
 }
+
+    @EQFrameworkAnnotation(author = {"EQ","JaiSriram"},category ={Category.SMOKE,Category.REGRESSION})
     @Test
     public void loginorm1(Map<Object,Object>map)  {
         getDriver().get(Utills.getKey(Props.URL));

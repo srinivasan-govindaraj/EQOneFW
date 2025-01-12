@@ -1,5 +1,10 @@
 package dev.eq.enums;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public enum Props {
     URL,
     UNAME,
@@ -8,5 +13,7 @@ public enum Props {
     PASSONLYSS,
     FAILEDONLYSS,
     TESTDATA;
+
+
 
 }

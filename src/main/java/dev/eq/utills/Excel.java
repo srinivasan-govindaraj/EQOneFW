@@ -1,5 +1,6 @@
 package dev.eq.utills;
 
+import dev.eq.props.Configs;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import static dev.eq.utills.Utills.getConfigOwner;
+
 public final class  Excel
 {
     private Excel() {
@@ -23,12 +26,13 @@ public final class  Excel
     }
 //need to change the method signature
     public static List<Map<Object, Object>> getData(String Sheetname) throws Exception {
-        List<Map<Object, Object>> testcase = new ArrayList<>();
-        config v = ConfigFactory.create(config.class);
-        Logger.getAnonymousLogger().info(v.url());
-        String path = Constants.getTestData() + Utills.getKey(Props.TESTDATA);
-        Logger.getAnonymousLogger().info(path);
-        FileInputStream fileInputStream = new FileInputStream(Constants.getTestData()+v.testdata());
+        List<Map<Object, Object>> testcase = new ArrayList<>();// singleton pattern
+       // Logger.getAnonymousLogger().info("URL is fecthed from the owner library as printed as below ");
+
+       // Logger.getAnonymousLogger().info("URL is fecthed from normal properties read method");
+       // String path = Constants.getTestData() + Utills.getKey(Props.TESTDATA);
+        //Logger.getAnonymousLogger().info(path);
+        FileInputStream fileInputStream = new FileInputStream(Constants.getTestData()+Utills.getKey(Props.TESTDATA));
         try (fileInputStream) {
             XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
             XSSFSheet xssfSheet = workbook.getSheet(Sheetname);

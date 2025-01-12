@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <SuiteXmlFile>Config/testng.xml</SuiteXmlFile>
+        <SuiteXmlFile>Config-Suite/testng.xml</SuiteXmlFile>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,6 +29,7 @@
         <Zerocell.version>0.5.1</Zerocell.version>
         <NoException.version>1.9.1</NoException.version>
         <MavenSurefirePlugin.version>3.5.2</MavenSurefirePlugin.version>
+        <MavenCheckstylePlugin.version>3.6.0</MavenCheckstylePlugin.version>
         <curl.logger.version>2.1.1</curl.logger.version>
         <pact.version>4.6.16</pact.version>
         <pact.plugin.version>4.2.2</pact.plugin.version>
@@ -38,6 +39,9 @@
         <Junit.version>5.11.4</Junit.version>
         <JunitSpring.version>4.6.16</JunitSpring.version>
         <Chaintest.version>1.0.1</Chaintest.version>
+        <Awaitlity.version>4.2.2</Awaitlity.version>
+        <Appium.version>9.3.0</Appium.version>
+        <Log4j.version>2.24.3</Log4j.version>
     </properties>
 
     <dependencies>
@@ -261,6 +265,58 @@
 <!--            <version>${JunitSpring.version}</version>-->
 <!--        </dependency> -->
 
+        <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/br.com.six2six/fixture-factory -->
+        <dependency>
+            <groupId>br.com.six2six</groupId>
+            <artifactId>fixture-factory</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.machinezoo.noexception/noexception -->
+        <dependency>
+            <groupId>com.machinezoo.noexception</groupId>
+            <artifactId>noexception</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.machinezoo.noexception/noexception-slf4j -->
+        <dependency>
+            <groupId>com.machinezoo.noexception</groupId>
+            <artifactId>noexception-slf4j</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.awaitility/awaitility -->
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${Awaitlity.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${Appium.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+
+
     </dependencies>
 <build>
     <plugins>
@@ -276,6 +332,30 @@
             </configuration>
         </plugin>
 
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>${MavenCheckstylePlugin.version}</version>
+            <configuration>
+                <consoleOutput>true</consoleOutput>
+                <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                <failOnViolation>false</failOnViolation>  <!-- Set to true to fail the build on violations -->
+                <failsOnError>false</failsOnError>
+                <configLocation>config/checkstyle/checkstyle.xml</configLocation>
+                <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
+                <suppressionsFileExpression>suppressions.xml</suppressionsFileExpression>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>validate</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
        <!-- <plugin>
             <groupId>au.com.dius.pact.provider</groupId>
             <artifactId>maven</artifactId>
@@ -289,6 +369,7 @@
                 <trimSnapshot>true</trimSnapshot>
             </configuration>
         </plugin>-->
+
 
     </plugins>
 </build>

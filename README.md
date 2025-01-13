@@ -1,9 +1,7 @@
 # EQOneFW
 - ### This is a starter kit to automate [Web,API,Mobile,Docker,Github Action [CICD] etc]
 
-# RealTime Report
-<div><a>https://srinivasan-govindaraj.github.io/EQOneFW/</a> </div>
-  
+# [RealTime Report](https://srinivasan-govindaraj.github.io/EQOneFW/)
 
 # Current Status
 - #### Optimization of code 

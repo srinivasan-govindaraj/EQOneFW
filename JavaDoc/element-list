@@ -1,0 +1,13 @@
+dev.eq
+dev.eq.annotation
+dev.eq.base
+dev.eq.constants
+dev.eq.dataprovider
+dev.eq.enums
+dev.eq.exception
+dev.eq.factory
+dev.eq.listners
+dev.eq.report
+dev.eq.utills
+test.eq.pages
+test.eq.test

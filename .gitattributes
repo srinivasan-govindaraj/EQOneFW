@@ -1,0 +1,13 @@
+# Java files
+*.java linguist-detectable=true
+*.java linguist-language=Java
+
+# JavaScript files
+*.js linguist-detectable=true
+*.js linguist-language=JavaScript
+
+# HTML files
+*.html linguist-detectable=true
+*.html linguist-language=HTML
+
+

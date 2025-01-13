@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.eq</groupId>
+    <artifactId>EQOneFW</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <SuiteXmlFile>Config-Suite/testng.xml</SuiteXmlFile>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <Selenium.version>4.27.0</Selenium.version>
+        <TestNG.version>7.10.2</TestNG.version>
+        <AssertJCore.version>3.26.3</AssertJCore.version>
+        <ApachePOI.version>5.3.0</ApachePOI.version>
+        <Jackson.version>2.18.2</Jackson.version>
+        <Extend.version>5.1.2</Extend.version>
+        <ApacheDirectory.version>2.18.0</ApacheDirectory.version>
+        <Cucumber.version>7.20.1</Cucumber.version>
+        <CucumberTestNG.version>7.20.1</CucumberTestNG.version>
+        <Log4j.version>2.24.3</Log4j.version>
+        <RestAssured.version>5.5.0</RestAssured.version>
+        <Lambook.version>1.18.36</Lambook.version>
+        <TestDataSupplier.version>2.3.0</TestDataSupplier.version>
+        <Zerocell.version>0.5.1</Zerocell.version>
+        <NoException.version>1.9.1</NoException.version>
+        <MavenSurefirePlugin.version>3.5.2</MavenSurefirePlugin.version>
+        <MavenCheckstylePlugin.version>3.6.0</MavenCheckstylePlugin.version>
+        <curl.logger.version>2.1.1</curl.logger.version>
+        <pact.version>4.6.16</pact.version>
+        <pact.plugin.version>4.2.2</pact.plugin.version>
+        <httpcore5.version>5.3.1</httpcore5.version>
+        <SpringBoot.version>3.4.1</SpringBoot.version>
+        <SpringBootTest.version>6.2.1</SpringBootTest.version>
+        <Junit.version>5.11.4</Junit.version>
+        <JunitSpring.version>4.6.16</JunitSpring.version>
+        <Chaintest.version>1.0.1</Chaintest.version>
+        <Awaitlity.version>4.2.2</Awaitlity.version>
+        <Appium.version>9.3.0</Appium.version>
+        <Log4j.version>2.24.3</Log4j.version>
+        <Lang3.version>3.17.0</Lang3.version>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${Selenium.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${TestNG.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${AssertJCore.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-guava -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-guava</artifactId>
+            <version>${AssertJCore.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${ApachePOI.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${ApachePOI.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${Jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${Jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${Jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${Extend.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.aventstack/chaintest-testng -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>chaintest-testng</artifactId>
+            <version>${Chaintest.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.9</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${ApacheDirectory.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${Cucumber.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${CucumberTestNG.version}</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/ -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner-java8 -->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner-java8</artifactId>
+            <version>1.0.12</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${RestAssured.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${RestAssured.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${Lambook.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.sskorol/test-data-supplier -->
+        <dependency>
+            <groupId>io.github.sskorol</groupId>
+            <artifactId>test-data-supplier</artifactId>
+            <version>${TestDataSupplier.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.creditdatamw.labs/zerocell-core  check and remove-->
+        <dependency>
+            <groupId>com.creditdatamw.labs</groupId>
+            <artifactId>zerocell-core</artifactId>
+            <version>${Zerocell.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.machinezoo.noexception/noexception -->
+        <dependency>
+            <groupId>com.machinezoo.noexception</groupId>
+            <artifactId>noexception</artifactId>
+            <version>${NoException.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.core5/httpcore5 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.core5</groupId>
+            <artifactId>httpcore5</artifactId>
+            <version>${httpcore5.version}</version>
+        </dependency>
+<!-- Please uncomment for the pact Testing -->
+<!--        -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/au.com.dius.pact.consumer/junit5 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius.pact.consumer</groupId>-->
+<!--            <artifactId>junit5</artifactId>-->
+<!--            <version>${pact.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius.pact.provider</groupId>-->
+<!--            <artifactId>junit5</artifactId>-->
+<!--            <version>${pact.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter</artifactId>-->
+<!--            <version>${SpringBoot.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <version>${SpringBoot.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-test &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-test</artifactId>-->
+<!--            <version>${SpringBootTest.version}</version>-->
+<!--        </dependency>-->
+
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <version>${Junit.version}</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/au.com.dius.pact.provider/junit5spring &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>au.com.dius.pact.provider</groupId>-->
+<!--            <artifactId>junit5spring</artifactId>-->
+<!--            <version>${JunitSpring.version}</version>-->
+<!--        </dependency> -->
+
+        <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/br.com.six2six/fixture-factory -->
+        <dependency>
+            <groupId>br.com.six2six</groupId>
+            <artifactId>fixture-factory</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.machinezoo.noexception/noexception -->
+        <dependency>
+            <groupId>com.machinezoo.noexception</groupId>
+            <artifactId>noexception</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.machinezoo.noexception/noexception-slf4j -->
+        <dependency>
+            <groupId>com.machinezoo.noexception</groupId>
+            <artifactId>noexception-slf4j</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.awaitility/awaitility -->
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${Awaitlity.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${Appium.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${Log4j.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
+        <dependency>
+            <groupId>com.sikulix</groupId>
+            <artifactId>sikulixapi</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${Lang3.version}</version>
+        </dependency>
+
+
+    </dependencies>
+<build>
+    <plugins>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${MavenSurefirePlugin.version}</version>
+            <configuration>
+                <suiteXmlFiles>
+                    <suiteXmlFile>${SuiteXmlFile}</suiteXmlFile>
+                </suiteXmlFiles>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>${MavenCheckstylePlugin.version}</version>
+            <configuration>
+                <consoleOutput>true</consoleOutput>
+                <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                <failOnViolation>false</failOnViolation>  <!-- Set to true to fail the build on violations -->
+                <failsOnError>false</failsOnError>
+                <configLocation>config/checkstyle/checkstyle.xml</configLocation>
+                <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
+                <suppressionsFileExpression>suppressions.xml</suppressionsFileExpression>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>validate</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+       <!-- <plugin>
+            <groupId>au.com.dius.pact.provider</groupId>
+            <artifactId>maven</artifactId>
+            <version>${pact.plugin.version}</version>
+            <configuration>
+                <pactDirectory>target/pacts</pactDirectory>
+                <pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
+                &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
+                <pactBrokerToken>${pactbroker.auth.token}</pactBrokerToken>
+                <projectVersion>${project.version}</projectVersion>
+                <trimSnapshot>true</trimSnapshot>
+            </configuration>
+        </plugin>-->
+
+
+    </plugins>
+</build>
+
+
+</project>

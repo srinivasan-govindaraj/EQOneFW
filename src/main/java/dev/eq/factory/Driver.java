@@ -75,13 +75,15 @@ public final class Driver {
                         edgeOptions.addArguments("--no-sandbox");
                         edgeOptions.addArguments("--disable-dev-shm-usage");
                         setDriver(new EdgeDriver(edgeOptions));
+                        break;
                     case "safari":
                         setDriver(new SafariDriver());
                         break;
                     case "chromegrid":
 
+
                         // chromeOptions.setCapability("browserVersion", "latest");
-                        chromeOptions.setCapability("selenoid:chromeOptions", new HashMap<String, Object>() {{
+                        chromeOptions.setCapability("selenoid:options", new HashMap<String, Object>() {{
                             /* How to add test badge */
                             put("name", "EQOneFW");
 

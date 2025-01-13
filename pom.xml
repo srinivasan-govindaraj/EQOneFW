@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <SuiteXmlFile>Config-Suite/testng.xml</SuiteXmlFile>
+        <SuiteXmlFile>config-suite/testng.xml</SuiteXmlFile>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -345,14 +345,14 @@
             </configuration>
         </plugin>
 
-        <plugin>
+       <!-- <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
             <version>${MavenCheckstylePlugin.version}</version>
             <configuration>
                 <consoleOutput>true</consoleOutput>
                 <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                <failOnViolation>false</failOnViolation>  <!-- Set to true to fail the build on violations -->
+                <failOnViolation>false</failOnViolation>  &lt;!&ndash; Set to true to fail the build on violations &ndash;&gt;
                 <failsOnError>false</failsOnError>
                 <configLocation>config/checkstyle/checkstyle.xml</configLocation>
                 <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
@@ -367,7 +367,7 @@
                     </goals>
                 </execution>
             </executions>
-        </plugin>
+        </plugin>-->
 
        <!-- <plugin>
             <groupId>au.com.dius.pact.provider</groupId>

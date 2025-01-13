@@ -7,6 +7,7 @@ import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.factory.ReportManager;
 import dev.eq.report.ExtendLogger;
 import dev.eq.report.Report;
+import org.apache.log4j.PropertyConfigurator;
 import org.testng.*;
 
 import java.io.IOException;
@@ -23,12 +24,9 @@ public class Listners implements ISuiteListener, ITestListener {
     public void onStart(ISuite suite) {
        // ISuiteListener.super.onStart(suite);
         Logger.getAnonymousLogger().info("Suite Started");
-            initReport();
-        try {
-            new Configuration().loadFromClasspathResource("src/test/resources/chaintest.properties");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        //PropertyConfigurator.configure("src/main/resources/log4j.properties");
+        initReport();
+
 
     }
 

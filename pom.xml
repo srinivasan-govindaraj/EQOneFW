@@ -41,7 +41,6 @@
         <Chaintest.version>1.0.1</Chaintest.version>
         <Awaitlity.version>4.2.2</Awaitlity.version>
         <Appium.version>9.3.0</Appium.version>
-        <Log4j.version>2.24.3</Log4j.version>
         <Lang3.version>3.17.0</Lang3.version>
     </properties>
 
@@ -116,16 +115,6 @@
             <version>${Chaintest.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.16</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.5.9</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
@@ -279,18 +268,6 @@
             <version>3.1.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.machinezoo.noexception/noexception -->
-        <dependency>
-            <groupId>com.machinezoo.noexception</groupId>
-            <artifactId>noexception</artifactId>
-            <version>1.9.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.machinezoo.noexception/noexception-slf4j -->
-        <dependency>
-            <groupId>com.machinezoo.noexception</groupId>
-            <artifactId>noexception-slf4j</artifactId>
-            <version>1.0.2</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.awaitility/awaitility -->
         <dependency>
             <groupId>org.awaitility</groupId>
@@ -309,12 +286,6 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${Log4j.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
         <dependency>

@@ -3,35 +3,39 @@ package dev.eq.base;
 import dev.eq.factory.ExplicitWaitFactory;
 import dev.eq.enums.WaitStrategy;
 import dev.eq.report.ExtendLogger;
+
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.time.Duration;
-import java.util.logging.Logger;
+
+
 
 import static dev.eq.constants.Constants.getEXPLICITWAIT;
 import static dev.eq.factory.DriverManager.getDriver;
 
 public class SeleniumBaseAction {
 
-
+    protected static org.apache.logging.log4j.Logger log = LogManager.getLogger();
 
     private boolean isDisplayed(By by)
 
     {
         if(Boolean.TRUE.equals(new WebDriverWait(getDriver(), Duration.ofSeconds(getEXPLICITWAIT())).until(d -> d.findElement(by).isEnabled())))
         {
-            Logger.getAnonymousLogger().info("Element is Enabled" + by);
+
+            log.info("Element is Enabled" + by);
             return true;
 
 
         }
         else
         {
-            Logger.getAnonymousLogger().warning("Element is not displayed" + by);
+            log.debug("Element is not displayed" + by);
             return false;
         }
 

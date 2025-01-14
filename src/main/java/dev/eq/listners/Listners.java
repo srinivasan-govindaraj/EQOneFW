@@ -1,16 +1,17 @@
 package dev.eq.listners;
 
 
-import com.aventstack.chaintest.conf.Configuration;
+
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.factory.ReportManager;
 import dev.eq.report.ExtendLogger;
 import dev.eq.report.Report;
-import org.apache.log4j.PropertyConfigurator;
+
+import org.apache.logging.log4j.LogManager;
 import org.testng.*;
 
-import java.io.IOException;
+
 import java.util.Arrays;
 import java.util.logging.Logger;
 
@@ -19,7 +20,7 @@ import static dev.eq.report.Report.initReport;
 
 
 public class Listners implements ISuiteListener, ITestListener {
-
+    protected static org.apache.logging.log4j.Logger log = LogManager.getLogger();
     @Override
     public void onStart(ISuite suite) {
        // ISuiteListener.super.onStart(suite);
@@ -33,14 +34,14 @@ public class Listners implements ISuiteListener, ITestListener {
     @Override
     public void onFinish(ISuite suite) {
         //ISuiteListener.super.onFinish(suite);
-        Logger.getAnonymousLogger().info("Suite Ended");
+       log.info("Suite Ended");
         flushReport();
     }
 
     @Override
     public void onTestStart(ITestResult result) {
         //ITestListener.super.onTestStart(result);
-        Logger.getAnonymousLogger().info("Test Started");
+        log.info("Test Started");
         Report.createTest(result.getMethod().getDescription());
        Report.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(EQFrameworkAnnotation.class).author());
        Report.addCatagory(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(EQFrameworkAnnotation.class).category());
@@ -50,14 +51,15 @@ public class Listners implements ISuiteListener, ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
        // ITestListener.super.onTestSuccess(result);
-        System.out.println("Testing success");
+        log.info("Testing success");
         ReportManager.StartTest().pass(result.getMethod().getMethodName() + "is passed");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         //ITestListener.super.onTestFailure(result);
-        System.out.println("Testing Failure");
+        log.debug("Testing Failure");
+        log.debug(result.getThrowable().getStackTrace());
         try {
             ExtendLogger.fail(result.getMethod().getMethodName() + "is failed",true);
             ReportManager.StartTest().fail(MarkupHelper.createCodeBlock(Arrays.toString(result.getThrowable().getStackTrace())));
@@ -69,7 +71,7 @@ public class Listners implements ISuiteListener, ITestListener {
     @Override
     public void onTestSkipped(ITestResult result) {
         //ITestListener.super.onTestSkipped(result);
-        System.out.println("Testing Skipped");
+        log.warn("Testing Skipped");
         ReportManager.StartTest().skip(result.getMethod().getMethodName() + "is skipped");
     }
 

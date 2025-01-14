@@ -50,6 +50,7 @@ public final class OrangeEQTests extends BaseTests{
     Assertions.assertThat(title).isEqualTo("OrangeHRM");
    map.forEach((k,v)-> System.out.println(k+":"+v));
     ReportManager.StartTest().pass(MarkupHelper.createUnorderedList(map).getMarkup());
+    log.info("Method Completed");
 
 }
 

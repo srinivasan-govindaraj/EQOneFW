@@ -4,12 +4,16 @@ package dev.eq.factory;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import dev.eq.exception.FWException;
 import dev.eq.report.ExtendLogger;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
 import javafx.scene.effect.Reflection;
 import org.openqa.selenium.SessionNotCreatedException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -44,6 +48,7 @@ public final class Driver {
         try {
             ChromeOptions chromeOptions = new ChromeOptions();
             EdgeOptions edgeOptions = new EdgeOptions();
+            UiAutomator2Options options = new UiAutomator2Options();
             /* String seleniumVersion = "4.27.0";
             String command = String.format(
                     "java -jar /Users/srinivasangovindaraj/IdeaProjects/FW/EQOneFW/Selenium_Grid/selenium-server-4.27.0.jar standalone --driver-configuration display-name=\"Chrome\" max-sessions=10 stereotype=\"{\\\"browserName\\\":\\\"chrome\\\"}\"",
@@ -140,6 +145,16 @@ public final class Driver {
                             throw new RuntimeException(e);
                         }
                         break;
+                    case "android":
+                        options.setCapability("deviceName", "My Device");
+                        options.setCapability("udid", "emulator-5554");
+                        options.setCapability("platformName", "Android");
+                        options.setCapability("platformVersion", "8.0.0");
+                        options.setCapability("appPackage", "com.android.calculator2");
+                        options.setCapability("appActivity", "com.android.calculator2.Calculator");
+                        setDriver(new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), options));
+
+                        break;
                 }
 
 
@@ -152,6 +167,8 @@ public final class Driver {
            // ExtendLogger.fail(Method.class.getName() + "is failed",true);
             //ReportManager.StartTest().fail(MarkupHelper.createCodeBlock(Arrays.toString(e.getStackTrace())));
             e.printStackTrace();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
         }
 
     }

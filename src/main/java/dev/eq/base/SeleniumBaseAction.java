@@ -20,7 +20,7 @@ import static dev.eq.factory.DriverManager.getDriver;
 
 public class SeleniumBaseAction {
 
-    protected static org.apache.logging.log4j.Logger log = LogManager.getLogger();
+    protected static org.apache.logging.log4j.Logger log = LogManager.getLogger(SeleniumBaseAction.class);
 
     private boolean isDisplayed(By by)
 

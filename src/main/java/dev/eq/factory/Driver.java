@@ -4,6 +4,7 @@ package dev.eq.factory;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import dev.eq.exception.FWException;
 import dev.eq.report.ExtendLogger;
+import dev.eq.utills.Utills;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import javafx.scene.effect.Reflection;
@@ -22,6 +23,7 @@ import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -74,6 +76,8 @@ public final class Driver {
                         chromeOptions.addArguments("--no-sandbox");
                         chromeOptions.addArguments("--disable-dev-shm-usage");
                         chromeOptions.addArguments("--headless");
+                        chromeOptions.setImplicitWaitTimeout(Duration.ofSeconds(Integer.parseInt(Utills.getValue("Selenium.implicitWait"))));
+                        chromeOptions.addArguments("--start-maximized");
                         setDriver(new ChromeDriver(chromeOptions));
                         break;
                     case "edge":

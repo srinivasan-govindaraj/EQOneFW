@@ -1,77 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" monitorInterval="30">
-    <Properties>
-        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
-        <Property name="APP_LOG_ROOT">logs</Property>
-    </Properties>
+<Configuration status="debug" strict="true" name="XMLConfigTest">
 
+    <Properties>
+        <Property name="CaseNo">%caseNo%</Property>
+    </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="INFO"/>
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n}"/>
         </Console>
-
-        <RollingFile name="FileAppender" fileName="${APP_LOG_ROOT}/application.log"
-                     filePattern="${APP_LOG_ROOT}/application-%d{yyyy-MM-dd}-%i.log">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+        <File name="LogFile" fileName="logs/eq.log" class="dev.eq.log.LogFileAppender">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+        <RollingFile name="RollingLogFile" fileName="logs/eqroll.log" filePattern="logs/eqroll-%d{MM-dd-yyyy}.log.gz" class="dev.eq.log.LogFileAppender">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="10MB" />
-                <TimeBasedTriggeringPolicy interval="1" />
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB"/>
             </Policies>
-            <DefaultRolloverStrategy max="10"/>
-        </RollingFile>
-
-        <RollingFile name="SeleniumLogAppender" fileName="${APP_LOG_ROOT}/selenium.log"
-                     filePattern="${APP_LOG_ROOT}/selenium-%d{yyyy-MM-dd}-%i.log">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
-            <Policies>
-                <SizeBasedTriggeringPolicy size="10MB" />
-            </Policies>
-            <DefaultRolloverStrategy max="5"/>
-        </RollingFile>
-
-        <RollingFile name="APILogAppender" fileName="${APP_LOG_ROOT}/api.log"
-                     filePattern="${APP_LOG_ROOT}/api-%d{yyyy-MM-dd}-%i.log">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
-            <Policies>
-                <SizeBasedTriggeringPolicy size="10MB" />
-            </Policies>
-            <DefaultRolloverStrategy max="5"/>
+            <DefaultRolloverStrategy max="20"/>
         </RollingFile>
     </Appenders>
-
     <Loggers>
-        <Logger name="org.openqa.selenium" level="INFO" additivity="false">
-            <AppenderRef ref="SeleniumLogAppender" />
-            <AppenderRef ref="Console" />
+        <Logger name="dev.eq" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="test.eq" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.openqa.selenium" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
         </Logger>
 
-        <Logger name="io.cucumber" level="INFO" additivity="false">
-            <AppenderRef ref="FileAppender" />
-            <AppenderRef ref="Console" />
-        </Logger>
-
-        <Logger name="io.restassured" level="DEBUG" additivity="false">
-            <AppenderRef ref="APILogAppender" />
-            <AppenderRef ref="Console" />
-        </Logger>
-
-        <Logger name="io.appium" level="INFO" additivity="false">
-            <AppenderRef ref="FileAppender" />
-            <AppenderRef ref="Console" />
-        </Logger>
-
-        <Logger name="org.apache.poi" level="WARN" additivity="false">
-            <AppenderRef ref="FileAppender" />
-        </Logger>
-
-        <Logger name="org.testng" level="INFO" additivity="false">
-            <AppenderRef ref="FileAppender" />
-            <AppenderRef ref="Console" />
-        </Logger>
-
-        <Root level="INFO">
-            <AppenderRef ref="Console" />
-            <AppenderRef ref="FileAppender" />
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="LogFile"/>
+            <AppenderRef ref="RollingLogFile"/>
         </Root>
     </Loggers>
+
 </Configuration>

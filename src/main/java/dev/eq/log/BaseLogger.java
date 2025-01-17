@@ -1,8 +1,11 @@
 package dev.eq.log;
 
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+
+
 
 public class BaseLogger {
-    public static final Logger logger = Logger.getLogger(BaseLogger.class.getName());
+    public static org.apache.logging.log4j.Logger log = LogManager.getLogger("EQ");
 
 }

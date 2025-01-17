@@ -3,28 +3,39 @@ package dev.eq.listners;
 
 
 import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.titusfortner.logging.SeleniumLogger;
 import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.factory.ReportManager;
 import dev.eq.report.ExtendLogger;
 import dev.eq.report.Report;
 
+import dev.eq.utills.ScenarioContext;
+import dev.eq.utills.ScenarioContextManager;
 import org.apache.logging.log4j.LogManager;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.testng.*;
+import static dev.eq.log.BaseLogger.log;
 
-
+import java.io.File;
 import java.util.Arrays;
-import java.util.logging.Logger;
+import java.util.logging.Level;
+
 
 import static dev.eq.report.Report.flushReport;
 import static dev.eq.report.Report.initReport;
 
 
+
 public class Listners implements ISuiteListener, ITestListener {
-    protected static org.apache.logging.log4j.Logger log = LogManager.getLogger();
+
     @Override
     public void onStart(ISuite suite) {
        // ISuiteListener.super.onStart(suite);
-        Logger.getAnonymousLogger().info("Suite Started");
+
+        log.info("Suite Started");
+        ScenarioContext scenarioContext = ScenarioContextManager.getContext();
+        scenarioContext.putObject("EQ","EQ");
+        log.info(" This one Scenario context"+scenarioContext.getObject("EQ"));
         //PropertyConfigurator.configure("src/main/resources/log4j.properties");
         initReport();
 

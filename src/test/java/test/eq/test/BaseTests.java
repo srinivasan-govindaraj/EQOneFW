@@ -12,7 +12,6 @@ import java.util.Map;
 
 
 public class BaseTests {
-    protected static Logger log = LogManager.getLogger(BaseTests.class);
 protected BaseTests()
 {
 

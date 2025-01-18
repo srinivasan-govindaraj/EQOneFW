@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="debug" strict="true" name="XMLConfigTest">
+<Configuration status="ALL" strict="true" name="XMLConfigTest">
+<!--OFF,FATAL,ERROR,WARN,INFO,DEBUG,TRACE,-->ALL-->
 
     <Properties>
         <Property name="CaseNo">%caseNo%</Property>
@@ -9,10 +10,10 @@
             <ThresholdFilter level="INFO"/>
             <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n}"/>
         </Console>
-        <File name="LogFile" fileName="logs/eq.log" class="dev.eq.log.LogFileAppender">
+        <File name="LogFile" fileName="test-output/logs/eq.log" class="dev.eq.log.LogFileAppender">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
-        <RollingFile name="RollingLogFile" fileName="logs/eqroll.log" filePattern="logs/eqroll-%d{MM-dd-yyyy}.log.gz" class="dev.eq.log.LogFileAppender">
+        <RollingFile name="RollingLogFile" fileName="test-output/logs/eqroll.log" filePattern="test-output/logs/eqroll-%d{MM-dd-yyyy}.log.gz" class="dev.eq.log.RollingLogFileAppender">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
             <Policies>
                 <OnStartupTriggeringPolicy />
@@ -32,7 +33,7 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <Root level="debug">
+        <Root level="ALL">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="LogFile"/>
             <AppenderRef ref="RollingLogFile"/>

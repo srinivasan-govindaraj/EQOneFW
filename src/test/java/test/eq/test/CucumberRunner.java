@@ -2,6 +2,8 @@ package test.eq.test;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.TestNGCucumberRunner;
+import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/java/test/eq/scenarios",
@@ -17,5 +19,13 @@ import io.cucumber.testng.CucumberOptions;
 
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
+        private TestNGCucumberRunner testNGCucumberRunner;
+        /*@Override
+        @DataProvider
+        public Object[][] scenarios() {
+
+            return this.testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
+        }*/
+
 
 }

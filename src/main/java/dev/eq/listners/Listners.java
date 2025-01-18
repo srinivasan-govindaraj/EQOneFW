@@ -11,6 +11,7 @@ import dev.eq.report.Report;
 
 import dev.eq.utills.ScenarioContext;
 import dev.eq.utills.ScenarioContextManager;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.testng.*;
@@ -33,11 +34,13 @@ public class Listners implements ISuiteListener, ITestListener {
        // ISuiteListener.super.onStart(suite);
 
         log.info("Suite Started");
+       // DOMConfigurator.configure("log4j2.xml");
         ScenarioContext scenarioContext = ScenarioContextManager.getContext();
         scenarioContext.putObject("EQ","EQ");
         log.info(" This one Scenario context"+scenarioContext.getObject("EQ"));
         //PropertyConfigurator.configure("src/main/resources/log4j.properties");
         initReport();
+
 
 
     }

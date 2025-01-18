@@ -1,5 +1,7 @@
 Feature: EQ
   @SmokeTest
+
+@filter(ToExecute.equal("yes"))
 Scenario: Breaker guesses a word
   Given the Maker has chosen a word
   When the Breaker makes a guess

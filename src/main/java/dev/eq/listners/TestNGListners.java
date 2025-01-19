@@ -3,7 +3,6 @@ package dev.eq.listners;
 
 
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.titusfortner.logging.SeleniumLogger;
 import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.factory.ReportManager;
 import dev.eq.report.ExtendLogger;
@@ -11,15 +10,10 @@ import dev.eq.report.Report;
 
 import dev.eq.utills.ScenarioContext;
 import dev.eq.utills.ScenarioContextManager;
-import org.apache.log4j.xml.DOMConfigurator;
-import org.apache.logging.log4j.LogManager;
-import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.testng.*;
 import static dev.eq.log.BaseLogger.log;
 
-import java.io.File;
 import java.util.Arrays;
-import java.util.logging.Level;
 
 
 import static dev.eq.report.Report.flushReport;
@@ -27,13 +21,13 @@ import static dev.eq.report.Report.initReport;
 
 
 
-public class Listners implements ISuiteListener, ITestListener {
+public class TestNGListners implements ISuiteListener, ITestListener {
 
     @Override
     public void onStart(ISuite suite) {
        // ISuiteListener.super.onStart(suite);
 
-        log.info("Suite Started");
+        log.info("Suite Started:"+suite.getName());
        // DOMConfigurator.configure("log4j2.xml");
         ScenarioContext scenarioContext = ScenarioContextManager.getContext();
         scenarioContext.putObject("EQ","EQ");
@@ -42,13 +36,12 @@ public class Listners implements ISuiteListener, ITestListener {
         initReport();
 
 
-
     }
 
     @Override
     public void onFinish(ISuite suite) {
         //ISuiteListener.super.onFinish(suite);
-       log.info("Suite Ended");
+       log.info("Suite Ended"+suite.getName());
         flushReport();
     }
 

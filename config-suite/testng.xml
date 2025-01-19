@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" verbose="10" thread-count="2" parallel="tests" data-provider-thread-count="1">
-    <!--<listeners>
-        <listener class-name="dev.eq.listners.Listners"/>
+    <listeners>
+        <listener class-name="dev.eq.listners.TestNGListners"/>
         <listener class-name="dev.eq.listners.MethodInterceptor"/>
         <listener class-name="dev.eq.listners.AnnotationTransformer"/>
-   &lt;!&ndash;  <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>&ndash;&gt;
-    </listeners>-->
+   <!--  <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>-->
+    </listeners>
     <test verbose="2" preserve-order="false" name="EQ">
       <!--  <groups>
             <run>
@@ -15,10 +15,10 @@
         </groups>-->
         <classes>
            <!-- <class name="test.test.eq.LoginPageTests"/>-->
-<!--            <class name="test.eq.test.OrangeEQTests"/>-->
+            <class name="test.eq.test.OrangeEQTests"/>
 <!--            <class name="test.eq.test.AmazonDemo"/>-->
                 <!--<class name="test.test.eq.HomePageTests"/>-->
-            <class name="test.eq.test.CucumberRunner"/>
+            <!--<class name="test.eq.runner.CucumberRunner"/>-->
         </classes>
         </test>
 </suite>

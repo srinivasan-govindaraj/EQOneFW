@@ -10,7 +10,7 @@ services:
     volumes:
       - "$PWD:/etc/selenoid/"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    command: ["-conf", "./browsers.json", "-limit", "25"]
+    command: ["-conf", "./browsers.json", "-limit", "10"]
 
   selenoid-ui:
     image: "aerokube/selenoid-ui:latest-release"

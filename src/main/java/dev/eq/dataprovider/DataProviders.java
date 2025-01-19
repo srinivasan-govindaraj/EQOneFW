@@ -1,11 +1,10 @@
-package dev.eq.utills;
+package dev.eq.dataprovider;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import io.github.sskorol.core.DataSupplier;
 import org.testng.annotations.DataProvider;
 
 import static dev.eq.utills.Excel.getData;

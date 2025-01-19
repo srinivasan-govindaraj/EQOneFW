@@ -6,7 +6,7 @@ import io.cucumber.testng.TestNGCucumberRunner;
 import org.testng.annotations.Listeners;
 
 @CucumberOptions(
-        dryRun = false,
+        dryRun = !true,
         features = {"src/test/java/test/eq/scenarios"},
         glue = {"test.eq.steps_definition","test.eq.hooks"},
        // extraGlue = {"test.eq.hooks.Hooks"}, glue and extraglue cant be used sametime

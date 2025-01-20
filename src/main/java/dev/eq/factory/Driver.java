@@ -1,31 +1,25 @@
 package dev.eq.factory;
 
 
-import com.aventstack.extentreports.markuputils.MarkupHelper;
-import dev.eq.exception.FWException;
+
 import dev.eq.report.ExtendLogger;
 import dev.eq.utills.Utills;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
-import javafx.scene.effect.Reflection;
 import org.openqa.selenium.SessionNotCreatedException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
-import java.lang.reflect.Method;
-import java.net.InetAddress;
+
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.UnknownHostException;
+
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 import static dev.eq.factory.DriverManager.*;
@@ -45,6 +39,8 @@ public final class Driver {
     {
 
     }
+
+
 
     public static void initDriver(String browser) {
         try {

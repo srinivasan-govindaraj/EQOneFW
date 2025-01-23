@@ -4,13 +4,17 @@ package dev.eq.factory;
 
 import dev.eq.report.ExtendLogger;
 import dev.eq.utills.Utills;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.SessionNotCreatedException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -146,14 +150,17 @@ public final class Driver {
                         }
                         break;
                     case "android":
-                        options.setCapability("deviceName", "My Device");
-                        options.setCapability("udid", "emulator-5554");
-                        options.setCapability("platformName", "Android");
-                        options.setCapability("platformVersion", "8.0.0");
-                        options.setCapability("appPackage", "com.android.calculator2");
-                        options.setCapability("appActivity", "com.android.calculator2.Calculator");
-                        setDriver(new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), options));
+                        options.setDeviceName("emulator-5554");
+                        //options.chromedriverUseSystemExecutable();
+                        options.setPlatformName("Android");
+                        options.setAutomationName("UiAutomator2");
+                        options.setNewCommandTimeout(Duration.ofSeconds(0));
+                        options.withBrowserName("Chrome");
+                        URL appiumServerURL = new URL("http://127.0.0.1:4723/wd/hub");
 
+                        // Create AndroidDriver instance
+                        setDriver(new AndroidDriver(appiumServerURL, options));
+                       // new AppiumDriver(appiumServerURL,options);
                         break;
                 }
 

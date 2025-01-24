@@ -15,7 +15,7 @@ public class Hooks {
     {
         Report.createTest(scenario.getName());
         log.info("Before Scenario"+scenario.getName());
-     Driver.initDriver("chromegrid");  //chromegrid //android
+     Driver.initDriver("android");  //chromegrid //android //ios
 
     }
     @After

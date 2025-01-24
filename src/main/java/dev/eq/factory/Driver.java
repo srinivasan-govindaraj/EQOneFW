@@ -7,6 +7,8 @@ import dev.eq.utills.Utills;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,9 +50,11 @@ public final class Driver {
 
     public static void initDriver(String browser) {
         try {
+            URL appiumServerURL = new URL("http://127.0.0.1:4723/wd/hub");
             ChromeOptions chromeOptions = new ChromeOptions();
             EdgeOptions edgeOptions = new EdgeOptions();
             UiAutomator2Options options = new UiAutomator2Options();
+            XCUITestOptions xcuiTestOptions = new XCUITestOptions();
             /* String seleniumVersion = "4.27.0";
             String command = String.format(
                     "java -jar /Users/srinivasangovindaraj/IdeaProjects/FW/EQOneFW/Selenium_Grid/selenium-server-4.27.0.jar standalone --driver-configuration display-name=\"Chrome\" max-sessions=10 stereotype=\"{\\\"browserName\\\":\\\"chrome\\\"}\"",
@@ -156,11 +160,21 @@ public final class Driver {
                         options.setAutomationName("UiAutomator2");
                         options.setNewCommandTimeout(Duration.ofSeconds(0));
                         options.withBrowserName("Chrome");
-                        URL appiumServerURL = new URL("http://127.0.0.1:4723/wd/hub");
+
 
                         // Create AndroidDriver instance
                         setDriver(new AndroidDriver(appiumServerURL, options));
                        // new AppiumDriver(appiumServerURL,options);
+                        break;
+                    case "ios":
+                        xcuiTestOptions.setAutomationName("XCUITest");
+                        xcuiTestOptions.setPlatformName("iOS");
+                        xcuiTestOptions.setDeviceName("iPhone 16");
+                        xcuiTestOptions.setPlatformVersion("18.1");
+                        xcuiTestOptions.withBrowserName("Safari");
+                        xcuiTestOptions.setUdid("2E2909E6-D277-46AF-A735-CCBADF96341B");
+                        xcuiTestOptions.setNewCommandTimeout(Duration.ofSeconds(0));
+                        setDriver(new IOSDriver(appiumServerURL,xcuiTestOptions));
                         break;
                 }
 

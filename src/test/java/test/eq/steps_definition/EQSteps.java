@@ -34,6 +34,7 @@ public class EQSteps {
         log.info("Given Steps");
        log.info(new Test().getName());
         RestAssured.baseURI = "https://fakestoreapi.com";
+        
 
         RequestSpecification httpRequest = RestAssured.given();
 
@@ -43,7 +44,7 @@ public class EQSteps {
         log.info("Status Code: " + response.getStatusCode());
         //ReportManager.StartTest().pass(MarkupHelper.createJsonCodeBlock(response.getBody()));
         getDriver().get(Utills.getKey(Props.URL));
-        getDriver().manage().window().maximize();
+       // getDriver().manage().window().maximize();
         log.info(Jsonutill.get(Props.URL));
     }
     @When("the Breaker makes a guess")

@@ -14,6 +14,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        api-level: [ 25, 29 ]
+        target: [ default ]
 
     steps:
       - uses: actions/checkout@v4
@@ -29,10 +33,32 @@ jobs:
 #      - name: Build with Maven
 #        run: mvn -B clean test
 
-      - name: Store docker image cache
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
 
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Appium
+        run: |
+          npm install -g appium
+          appium -v
+
+      - name: Start Appium Server
+        run: appium &>/dev/null &
+
+      - name: Run Appium Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
+          arch: x86_64
+          profile: Nexus 6
+          script: mvn clean test
+#      - name: Store docker image cache
+#        uses: satackey/action-docker-layer-caching@v0.0.11
+#        continue-on-error: true
 
 #      # Solution 1: Install X11 utilities
 #      - name: Install X11 utilities
@@ -48,31 +74,30 @@ jobs:
 #          export DISPLAY=:99
 
       # Solution 3: Configure tests for headless mode
-      - name: Set Java AWT Headless Property
-        run: echo "JAVA_OPTS=-Djava.awt.headless=true" >> $GITHUB_ENV
+#      - name: Set Java AWT Headless Property
+#        run: echo "JAVA_OPTS=-Djava.awt.headless=true" >> $GITHUB_ENV
+#
+#      - name: Set up docker-compose-selenoid.yml with X11 support
+#        run: |
+#          docker pull selenoid/vnc_chrome:128.0
+#          docker pull selenoid/video-recorder:latest-release
+#          docker pull selenium/standalone-chrome:latest
+#          curl -s https://aerokube.com/cm/bash | bash
+#          ./cm selenoid start --vnc
 
-      - name: Set up docker-compose-selenoid.yml with X11 support
-        run: |
-          docker pull selenoid/vnc_chrome:128.0
-          docker pull selenoid/video-recorder:latest-release
-          docker pull selenium/standalone-chrome:latest
-          curl -s https://aerokube.com/cm/bash | bash
-          ./cm selenoid start --vnc
+#      - name: Start docker-selenoid UI
+#        run: |
+#          ./cm selenoid-ui start
+#
+#      - name: Restore Maven cache
+#        uses: skjolber/maven-cache-github-action@v1
+#        continue-on-error: true
+#        with:
+#          step: restore
 
-      - name: Start docker-selenoid UI
-        run: |
-          ./cm selenoid-ui start
+#      - name: Run tests with maven
+#        run: mvn -fn test
 
-      - name: Restore Maven cache
-        uses: skjolber/maven-cache-github-action@v1
-        continue-on-error: true
-        with:
-          step: restore
-
-      - name: Run tests with maven
-        run: mvn -fn test
-#        env:
-#          JAVA_OPTS: ${{ env.JAVA_OPTS }}
 
       - name: Publish TestNG Report
         uses: starburstdata/action-testng-report@master
@@ -100,8 +125,8 @@ jobs:
         with:
           step: save
 
-      - name: Stop docker-selenoid.yml
-        if: always()
-        run: |
-          ./cm selenoid stop
-          ./cm selenoid-ui stop
+#      - name: Stop docker-selenoid
+#        if: always()
+#        run: |
+#          ./cm selenoid stop
+#          ./cm selenoid-ui stop

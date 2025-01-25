@@ -52,12 +52,14 @@ jobs:
           npm install -g appium
           appium -v
           appium driver install uiautomator2
+          appium driver install chromedriver
           appium driver list --installed
 
 
 
       - name: Start Appium Server
-        run: appium &>/dev/null &
+        run: appium --allow-insecure chromedriver_autodownload &>/dev/null &
+
 
       - name: Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2

@@ -50,7 +50,7 @@ public final class Driver {
 
     public static void initDriver(String browser) {
         try {
-            URL appiumServerURL = new URL("http://localhost:4723/wd/hub");
+            URL appiumServerURL = new URL("http://localhost:4723");
             ChromeOptions chromeOptions = new ChromeOptions();
             EdgeOptions edgeOptions = new EdgeOptions();
             UiAutomator2Options options = new UiAutomator2Options();

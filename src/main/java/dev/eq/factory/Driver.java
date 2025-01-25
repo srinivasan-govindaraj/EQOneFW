@@ -162,7 +162,7 @@ public final class Driver {
                         options.setNewCommandTimeout(Duration.ofSeconds(0));
                        // options.withBrowserName("Chrome"); // local
                         options.withBrowserName("Browser");
-                        //options.setNoReset(true);/// for the github CI
+                        options.setNoReset(true);/// for the github CI
 
 
                         // Create AndroidDriver instance

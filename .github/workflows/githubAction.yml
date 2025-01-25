@@ -52,7 +52,6 @@ jobs:
           npm install -g appium
           appium -v
           appium driver install uiautomator2
-          appium driver install chromedriver
           appium driver list --installed
 
 

@@ -160,8 +160,9 @@ public final class Driver {
                         options.setPlatformName("Android");
                         options.setAutomationName("UiAutomator2");
                         options.setNewCommandTimeout(Duration.ofSeconds(0));
-                        options.withBrowserName("Chrome");
-                        options.setNoReset(true);/// for the github CI
+                       // options.withBrowserName("Chrome"); // local
+                        options.withBrowserName("Browser");
+                        //options.setNoReset(true);/// for the github CI
 
 
                         // Create AndroidDriver instance

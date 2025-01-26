@@ -1,6 +1,6 @@
 package dev.eq.listners;
 
-import dev.eq.utills.DataProviders;
+import dev.eq.dataprovider.DataProviders;
 import dev.eq.utills.Utills;
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.ITestAnnotation;

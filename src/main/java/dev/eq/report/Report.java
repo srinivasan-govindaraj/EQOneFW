@@ -55,11 +55,7 @@ public final class Report {
             extent.flush();
             //will implement the scenario context future
             ReportManager.flushTest();
-            try {
-                Desktop.getDesktop().browse(new File(ExtentReortPath).toURI());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            // Desktop.getDesktop().browse(new File(ExtentReortPath).toURI());
         }
 
     }

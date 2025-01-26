@@ -21,7 +21,7 @@
 - Docker [Selenoid,Selenium Grid,ChainTest]
 - Github Actions [CI/CD]
 - lombok [Code Redundancy]
-- Appium[Mobile]
+- Appium[Mobile ]
 - Jackson [API]
 - Awaitility [API]
 - Database Testing

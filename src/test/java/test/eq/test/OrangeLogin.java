@@ -1,10 +1,15 @@
 package test.eq.test;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import test.eq.pages.Login;
 import dev.eq.base.SeleniumBaseAction;
 import dev.eq.enums.WaitStrategy;
 import dev.eq.factory.ReportManager;
 import org.openqa.selenium.By;
+
+import java.time.Duration;
+
+import static dev.eq.factory.DriverManager.getDriver;
 
 public final class OrangeLogin extends SeleniumBaseAction {
 
@@ -15,7 +20,7 @@ public final class OrangeLogin extends SeleniumBaseAction {
     public  Login welcome()
     {
         ReportManager.StartTest().pass("Landed to the page");
-        //new WebDriverWait(getDriver(),Duration.ofSeconds(20)).until(d ->d.findElement(linkWelcome).isDisplayed());
+        new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(d ->d.findElement(linkWelcome).isDisplayed());
         click(buttonLogoutProfile, WaitStrategy.CLICKABLE);
         ReportManager.StartTest().info("We are in the Home Page");
         click(linkLogout,WaitStrategy.CLICKABLE);

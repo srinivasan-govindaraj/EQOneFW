@@ -7,7 +7,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import dev.eq.annotation.EQFrameworkAnnotation;
 import dev.eq.enums.Category;
 
-import dev.eq.log.BaseLogger;
+import  static dev.eq.log.BaseLogger.log;
 import test.eq.pages.Login;
 
 import static dev.eq.factory.DriverManager.getDriver;
@@ -40,9 +40,7 @@ public final class OrangeEQTests extends BaseTests{
 
     getDriver().get(Utills.getKey(Props.URL));
     getDriver().manage().window().maximize();
-    getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-    BaseLogger.logger.info(Jsonutill.get(Props.URL));
-    System.out.println(Jsonutill.get(Props.URL));
+    log.info(Jsonutill.get(Props.URL));
     String title = new Login().enterUserName(map.get("uname").toString())
             .enterPassword(map.get("password").toString())
             .clickLogin()
@@ -50,6 +48,7 @@ public final class OrangeEQTests extends BaseTests{
     Assertions.assertThat(title).isEqualTo("OrangeHRM");
    map.forEach((k,v)-> System.out.println(k+":"+v));
     ReportManager.StartTest().pass(MarkupHelper.createUnorderedList(map).getMarkup());
+    log.info("Method Completed");
 
 }
 

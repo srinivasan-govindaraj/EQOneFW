@@ -42,6 +42,7 @@
         <Awaitlity.version>4.2.2</Awaitlity.version>
         <Appium.version>9.3.0</Appium.version>
         <Lang3.version>3.17.0</Lang3.version>
+        <DequeAccessbility.version>4.10.1</DequeAccessbility.version>
     </properties>
 
     <dependencies>
@@ -317,6 +318,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${Lang3.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.deque.html.axe-core/selenium -->
+        <dependency>
+            <groupId>com.deque.html.axe-core</groupId>
+            <artifactId>selenium</artifactId>
+            <version>${DequeAccessbility.version}</version>
         </dependency>
 
 

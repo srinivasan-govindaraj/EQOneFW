@@ -155,7 +155,7 @@ public final class Driver {
                         break;
                     case "android":
                        // options.setDeviceName("emulator-5554");
-                        options.setDeviceName("Nexus 6");
+                        options.setDeviceName("Samsung Galaxy S10");
                         //options.chromedriverUseSystemExecutable();
                         options.setPlatformName("Android");
                         options.setAutomationName("UiAutomator2");

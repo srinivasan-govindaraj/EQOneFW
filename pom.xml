@@ -13,7 +13,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <Selenium.version>4.27.0</Selenium.version>
+        <Selenium.version>4.28.1</Selenium.version>
         <TestNG.version>7.10.2</TestNG.version>
         <AssertJCore.version>3.26.3</AssertJCore.version>
         <ApachePOI.version>5.3.0</ApachePOI.version>
@@ -43,6 +43,7 @@
         <Appium.version>9.3.0</Appium.version>
         <Lang3.version>3.17.0</Lang3.version>
         <DequeAccessbility.version>4.10.1</DequeAccessbility.version>
+        <Gson.version>2.11.0</Gson.version>
     </properties>
 
     <dependencies>
@@ -324,6 +325,12 @@
             <groupId>com.deque.html.axe-core</groupId>
             <artifactId>selenium</artifactId>
             <version>${DequeAccessbility.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${Gson.version}</version>
         </dependency>
 
 

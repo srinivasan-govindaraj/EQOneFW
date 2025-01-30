@@ -3,8 +3,6 @@ package test.eq.test;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
@@ -203,6 +201,7 @@ public class SeleniumDevtools {
     @Test
     public void NetworkLogs() throws IOException {
         ChromeOptions options = new ChromeOptions();
+        options.setCapability("webSocketUrl", true);
         ChromeDriver driver = new ChromeDriver(options);
         DevTools devTools = driver.getDevTools();
         devTools.createSession();

@@ -44,6 +44,7 @@
         <Lang3.version>3.17.0</Lang3.version>
         <DequeAccessbility.version>4.10.1</DequeAccessbility.version>
         <Gson.version>2.11.0</Gson.version>
+        <JDBI.version>3.47.0</JDBI.version>
     </properties>
 
     <dependencies>
@@ -331,6 +332,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${Gson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jdbi/jdbi3-core -->
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-core</artifactId>
+            <version>${JDBI.version}</version>
         </dependency>
 
 

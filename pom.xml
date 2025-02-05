@@ -339,6 +339,12 @@
             <artifactId>jdbi3-core</artifactId>
             <version>${JDBI.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.5</version>
+        </dependency>
 
 
     </dependencies>
@@ -355,30 +361,39 @@
                 </suiteXmlFiles>
             </configuration>
         </plugin>
-
-       <!-- <plugin>
+        <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>${MavenCheckstylePlugin.version}</version>
+            <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
-                <consoleOutput>true</consoleOutput>
-                <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                <failOnViolation>false</failOnViolation>  &lt;!&ndash; Set to true to fail the build on violations &ndash;&gt;
-                <failsOnError>false</failsOnError>
-                <configLocation>config/checkstyle/checkstyle.xml</configLocation>
-                <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
-                <suppressionsFileExpression>suppressions.xml</suppressionsFileExpression>
+                <source>23</source>
+                <target>23</target>
+                <compilerArgs>--enable-preview</compilerArgs>
             </configuration>
-            <executions>
-                <execution>
-                    <id>validate</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>-->
+        </plugin>
+
+        <!-- <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-checkstyle-plugin</artifactId>
+             <version>${MavenCheckstylePlugin.version}</version>
+             <configuration>
+                 <consoleOutput>true</consoleOutput>
+                 <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                 <failOnViolation>false</failOnViolation>  &lt;!&ndash; Set to true to fail the build on violations &ndash;&gt;
+                 <failsOnError>false</failsOnError>
+                 <configLocation>config/checkstyle/checkstyle.xml</configLocation>
+                 <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
+                 <suppressionsFileExpression>suppressions.xml</suppressionsFileExpression>
+             </configuration>
+             <executions>
+                 <execution>
+                     <id>validate</id>
+                     <phase>validate</phase>
+                     <goals>
+                         <goal>check</goal>
+                     </goals>
+                 </execution>
+             </executions>
+         </plugin>-->
 
        <!-- <plugin>
             <groupId>au.com.dius.pact.provider</groupId>

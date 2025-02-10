@@ -1,0 +1,18 @@
+[node]
+host = "localhost"
+port = 5555
+publish_events = "tcp://localhost:4442"
+subscribe_events = "tcp://localhost:4443"
+
+[detect_drivers]
+enabled = false
+
+[[driver_configuration]]
+display_name = "Chrome"
+max_sessions = 1
+stereotype = "{\"browserName\":\"chrome\",\"platformName\":\"Windows\"}"
+
+[[driver_configuration]]
+display_name = "Edge"
+max_sessions = 1
+stereotype = "{\"browserName\":\"MicrosoftEdge\",\"platformName\":\"Windows\"}"

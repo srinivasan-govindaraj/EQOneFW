@@ -1,0 +1,6 @@
+[router]
+host = "localhost"
+port = 4444
+sessions_url = "http://localhost:5556"
+distributor_url = "http://localhost:5553"
+session_queue_url = "http://localhost:5559"

@@ -50,6 +50,9 @@ public class EQSteps {
         log.info("Status Code: " + response.getStatusCode());
         //ReportManager.StartTest().pass(MarkupHelper.createJsonCodeBlock(response.getBody()));
         getDriver().get(Utills.getKey(Props.URL));
+        /**
+         * Contract Testing deque library
+         */
         AxeBuilder axeBuilder = new AxeBuilder()
               /*  .withTags(Collections.singletonList("wcag21aa"))
                 .disableRules(Collections.singletonList("color-contrast"));*/

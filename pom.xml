@@ -13,9 +13,10 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <Selenium.version>4.27.0</Selenium.version>
+        <Selenium.version>4.28.1</Selenium.version>
         <TestNG.version>7.10.2</TestNG.version>
         <AssertJCore.version>3.26.3</AssertJCore.version>
+        <JsonAssert.version>1.5.3</JsonAssert.version>
         <ApachePOI.version>5.3.0</ApachePOI.version>
         <Jackson.version>2.18.2</Jackson.version>
         <Extend.version>5.1.2</Extend.version>
@@ -43,6 +44,8 @@
         <Appium.version>9.3.0</Appium.version>
         <Lang3.version>3.17.0</Lang3.version>
         <DequeAccessbility.version>4.10.1</DequeAccessbility.version>
+        <Gson.version>2.11.0</Gson.version>
+        <JDBI.version>3.47.0</JDBI.version>
     </properties>
 
     <dependencies>
@@ -194,6 +197,14 @@
             <version>${RestAssured.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.skyscreamer/jsonassert -->
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>${JsonAssert.version}</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -325,6 +336,24 @@
             <artifactId>selenium</artifactId>
             <version>${DequeAccessbility.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${Gson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jdbi/jdbi3-core -->
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-core</artifactId>
+            <version>${JDBI.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.5</version>
+        </dependency>
 
 
     </dependencies>
@@ -341,30 +370,39 @@
                 </suiteXmlFiles>
             </configuration>
         </plugin>
-
-       <!-- <plugin>
+        <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>${MavenCheckstylePlugin.version}</version>
+            <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
-                <consoleOutput>true</consoleOutput>
-                <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                <failOnViolation>false</failOnViolation>  &lt;!&ndash; Set to true to fail the build on violations &ndash;&gt;
-                <failsOnError>false</failsOnError>
-                <configLocation>config/checkstyle/checkstyle.xml</configLocation>
-                <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
-                <suppressionsFileExpression>suppressions.xml</suppressionsFileExpression>
+                <source>17</source>
+                <target>17</target>
+<!--                <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
             </configuration>
-            <executions>
-                <execution>
-                    <id>validate</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>-->
+        </plugin>
+
+        <!-- <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-checkstyle-plugin</artifactId>
+             <version>${MavenCheckstylePlugin.version}</version>
+             <configuration>
+                 <consoleOutput>true</consoleOutput>
+                 <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                 <failOnViolation>false</failOnViolation>  &lt;!&ndash; Set to true to fail the build on violations &ndash;&gt;
+                 <failsOnError>false</failsOnError>
+                 <configLocation>config/checkstyle/checkstyle.xml</configLocation>
+                 <suppressionsLocation>config/checkstyle/suppressions.xml</suppressionsLocation>
+                 <suppressionsFileExpression>suppressions.xml</suppressionsFileExpression>
+             </configuration>
+             <executions>
+                 <execution>
+                     <id>validate</id>
+                     <phase>validate</phase>
+                     <goals>
+                         <goal>check</goal>
+                     </goals>
+                 </execution>
+             </executions>
+         </plugin>-->
 
        <!-- <plugin>
             <groupId>au.com.dius.pact.provider</groupId>

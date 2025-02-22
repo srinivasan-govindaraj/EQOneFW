@@ -1,0 +1,7 @@
+[distributor]
+host = "localhost"
+port = 5553
+session_queue_url = "http://localhost:5559"
+session_map_url = "http://localhost:5556"
+publish_events = "tcp://localhost:4442"
+subscribe_events = "tcp://localhost:4443"

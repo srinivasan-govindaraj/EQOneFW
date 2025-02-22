@@ -1,0 +1,24 @@
+Open six separate Command Prompt windows.
+In each window, navigate to your Selenium directory (e.g., cd C:\selenium\).
+Start the components in the following order by running the respective batch files:
+a. Event Bus
+b. Session Queue
+c. Session Map
+d. Distributor
+e. Router
+f. Node
+
+start-event-bus.bat:
+java -jar selenium-server-4.9.0.jar event-bus --config config\event-bus.toml
+start-session-queue.bat:
+java -jar selenium-server-4.9.0.jar sessionqueue --config config\session-queue.toml
+start-session-map.bat:
+java -jar selenium-server-4.9.0.jar sessionmap --config config\session-map.toml
+start-distributor.bat:
+java -jar selenium-server-4.9.0.jar distributor --config config\distributor.toml
+start-router.bat:
+java -jar selenium-server-4.9.0.jar router --config config\router.toml
+start-node.bat:
+java -jar selenium-server-4.9.0.jar node --config config\node.toml
+Note: Replace selenium-server-4.9.0.jar with the actual name of your downloaded Selenium Server jar file.
+

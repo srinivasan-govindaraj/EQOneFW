@@ -1,7 +1,6 @@
-package test.eq.test;
+package test.eq.pages;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
-import test.eq.pages.Login;
 import dev.eq.base.SeleniumBaseAction;
 import dev.eq.enums.WaitStrategy;
 import dev.eq.factory.ReportManager;

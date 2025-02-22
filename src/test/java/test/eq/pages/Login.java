@@ -1,6 +1,5 @@
 package test.eq.pages;
 
-import test.eq.test.OrangeLogin;
 import dev.eq.base.SeleniumBaseAction;
 import dev.eq.enums.WaitStrategy;
 import org.openqa.selenium.By;

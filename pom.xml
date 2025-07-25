@@ -13,7 +13,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <Selenium.version>4.28.1</Selenium.version>
+        <Selenium.version>4.34.0</Selenium.version>
         <TestNG.version>7.10.2</TestNG.version>
         <AssertJCore.version>3.26.3</AssertJCore.version>
         <JsonAssert.version>1.5.3</JsonAssert.version>
@@ -60,6 +60,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${TestNG.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v138 -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-devtools-v138</artifactId>
+            <version>${Selenium.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->

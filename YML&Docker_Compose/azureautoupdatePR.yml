@@ -1,0 +1,68 @@
+trigger:
+  branches:
+    include:
+      - '*'     # Run CI for any branch push
+
+pr:
+  branches:
+    include:
+      - main
+      - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  # Step 1: Checkout full history for accurate git diff
+  - checkout: self
+    fetchDepth: 0
+
+  # Step 2: Build & Test
+  - script: |
+      echo "Running build and tests..."
+      # Example: dotnet build && dotnet test
+    displayName: 'Build and Test Steps'
+
+  # Step 3: Generate Comparison Report
+  - script: |
+      TARGET_BRANCH="origin/main"
+      
+      echo "Fetching target branch for diff..."
+      git fetch origin main
+      
+      echo "Generating comparison report against $TARGET_BRANCH"
+      git diff $TARGET_BRANCH...HEAD > comparison_report.txt
+      
+      echo "Comparison report generated."
+    displayName: "Generate Comparison Report"
+
+  # Step 4: Publish the comparison report as pipeline artifact
+  - publish: comparison_report.txt
+    artifact: CompareReport
+    displayName: "Publish Comparison Report"
+
+  # Step 5: Post PR comment with link to artifact (only runs if it's a PR build)
+  - task: AzureCLI@2
+    condition: eq(variables['Build.Reason'], 'PullRequest')
+    inputs:
+      azureSubscription: '<your-service-connection-name>'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        echo "Posting comment to PR ID: $(System.PullRequest.PullRequestId)"
+        
+        # Build artifact download URL
+        ORG_URL="$(System.CollectionUri)"
+        PROJECT_NAME="$(System.TeamProject)"
+        BUILD_ID="$(Build.BuildId)"
+        ARTIFACT_NAME="CompareReport"
+        ARTIFACT_URL="${ORG_URL}${PROJECT_NAME}/_build/results?buildId=${BUILD_ID}&view=artifacts&type=publishedArtifacts"
+        
+        COMMENT_CONTENT="✔ Build succeeded for PR #$(System.PullRequest.PullRequestId).  
+        📝 [Download Comparison Report](${ARTIFACT_URL})  
+        Please review and approve if all looks good."
+        
+        az devops configure --defaults organization="$ORG_URL" project="$PROJECT_NAME"
+        az repos pr comment --id $(System.PullRequest.PullRequestId) --content "$COMMENT_CONTENT"
+    env:
+      AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)

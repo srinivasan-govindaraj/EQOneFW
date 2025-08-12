@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - '*'     # Run CI for any branch push
+      - '*'
 
 pr:
   branches:
@@ -13,35 +13,40 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # Step 1: Checkout full history for accurate git diff
   - checkout: self
     fetchDepth: 0
 
-  # Step 2: Build & Test
+  # Build & Test
   - script: |
       echo "Running build and tests..."
-      # Example: dotnet build && dotnet test
+      # Example: simulate failure with `false` or success with real commands
+      dotnet build && dotnet test
     displayName: 'Build and Test Steps'
+    continueOnError: true   # We still want later steps to run even if build fails
 
-  # Step 3: Generate Comparison Report
+  # Capture build result in a variable
+  - bash: |
+      if [ "$(Agent.JobStatus)" == "Succeeded" ]; then
+        echo "##vso[task.setvariable variable=BuildOutcome]Succeeded"
+      else
+        echo "##vso[task.setvariable variable=BuildOutcome]Failed"
+      fi
+    displayName: "Set BuildOutcome variable"
+
+  # Generate Comparison Report
   - script: |
       TARGET_BRANCH="origin/main"
-      
-      echo "Fetching target branch for diff..."
       git fetch origin main
-      
-      echo "Generating comparison report against $TARGET_BRANCH"
       git diff $TARGET_BRANCH...HEAD > comparison_report.txt
-      
       echo "Comparison report generated."
     displayName: "Generate Comparison Report"
 
-  # Step 4: Publish the comparison report as pipeline artifact
+  # Publish artifact
   - publish: comparison_report.txt
     artifact: CompareReport
     displayName: "Publish Comparison Report"
 
-  # Step 5: Post PR comment with link to artifact (only runs if it's a PR build)
+  # Post or Update PR Comment (success or failure)
   - task: AzureCLI@2
     condition: eq(variables['Build.Reason'], 'PullRequest')
     inputs:
@@ -49,20 +54,43 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        echo "Posting comment to PR ID: $(System.PullRequest.PullRequestId)"
-        
-        # Build artifact download URL
         ORG_URL="$(System.CollectionUri)"
         PROJECT_NAME="$(System.TeamProject)"
         BUILD_ID="$(Build.BuildId)"
-        ARTIFACT_NAME="CompareReport"
         ARTIFACT_URL="${ORG_URL}${PROJECT_NAME}/_build/results?buildId=${BUILD_ID}&view=artifacts&type=publishedArtifacts"
         
-        COMMENT_CONTENT="✔ Build succeeded for PR #$(System.PullRequest.PullRequestId).  
-        📝 [Download Comparison Report](${ARTIFACT_URL})  
-        Please review and approve if all looks good."
+        COMMENT_MARKER="<!--PIPELINE-COMMENT-->"
         
-        az devops configure --defaults organization="$ORG_URL" project="$PROJECT_NAME"
-        az repos pr comment --id $(System.PullRequest.PullRequestId) --content "$COMMENT_CONTENT"
-    env:
-      AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+        if [ "$BuildOutcome" == "Succeeded" ]; then
+          STATUS_ICON="✔"
+          STATUS_MSG="Build succeeded ✅. You can proceed with review."
+        else
+          STATUS_ICON="❌"
+          STATUS_MSG="Build failed ❌. Please fix the issues before approving."
+        fi
+        
+        COMMENT_BODY="${COMMENT_MARKER}
+  ${STATUS_ICON} **$STATUS_MSG**
+  📝 [Download Comparison Report](${ARTIFACT_URL})
+  *(This comment is automatically updated by the CI pipeline)*"
+  
+  az devops configure --defaults organization="$ORG_URL" project="$PROJECT_NAME"
+  
+  COMMENT_ID=$(az repos pr comment list \
+  --id $(System.PullRequest.PullRequestId) \
+  --output tsv --query "[?contains(content,'$COMMENT_MARKER')].id" | head -n 1)
+  
+  if [ -n "$COMMENT_ID" ]; then
+  echo "Updating existing PR comment ($COMMENT_ID)..."
+  az repos pr comment update \
+  --id $(System.PullRequest.PullRequestId) \
+  --comment-id "$COMMENT_ID" \
+  --content "$COMMENT_BODY"
+  else
+  echo "Posting new PR comment..."
+  az repos pr comment create \
+  --id $(System.PullRequest.PullRequestId) \
+  --content "$COMMENT_BODY"
+  fi
+env:
+  AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
